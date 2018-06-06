@@ -1,0 +1,146 @@
+-- @nsURI UML=http://www.eclipse.org/uml2/5.0.0/UML
+-- @path CRUDSpring=/SpringModelMof/model/springModelMof.ecore
+
+module EntityRule;
+create OUT : CRUDSpring from IN : UML;
+
+-- Get a value of one property from a specific stereotype
+helper context UML!Element def: getStereotypeProperty(stereotype: String, property: String): OclAny = 
+	self.getValue(self.getAppliedStereotype(stereotype), property);
+
+-- Map between UML Types and Ecore Types
+helper def: typeMap: Map(String, CRUDSpring!TypesEnum) = Map{
+	('String', #string),
+	('ELong', #long)
+};
+
+-- Map between UML Database Operations and Ecore Database Operations
+helper def: operationMap: Map(String, CRUDSpring!ReferenceOperations) = Map{
+	('Cascade', #Cascade),
+	('Restrict', #Restrict),
+	('NoAction', #NoAction),
+	('SetNull', #SetNull)
+};
+
+-- Map between UML Property and Ecore Property
+helper def: propertyMap: Map(UML!Property, CRUDSpring!Property) = Map{};
+
+-- Represents the container of all entities
+helper def: system: CRUDSpring!System = OclUndefined;
+
+-- Initialize system
+entrypoint rule StartSystem(){
+	to ecoreSystem: CRUDSpring!System
+	do{
+		thisModule.system <- ecoreSystem; 
+	}
+}
+
+-- Get all generated entities and store it on system
+endpoint rule EndSystem(){
+	do{
+		thisModule.system.entities <- CRUDSpring!Entity.allInstances();
+	}
+}
+
+-- Direct transformation from UML Entity to Ecore Entity
+rule Entity{
+	from umlEntity: UML!Class(
+		not(umlEntity.getAppliedStereotype('SpringModel::Entity').oclIsUndefined())
+			 or 
+		not(umlEntity.getAppliedStereotype('SpringModel::CrudEntity').oclIsUndefined())
+	)
+	to ecoreEntity: CRUDSpring!Entity(
+		name <- umlEntity.name,
+		properties <- umlEntity.ownedAttribute
+	)
+}
+
+-- Direct transformation from UML Entity to Ecore CrudEntity
+rule CrudEntity extends Entity{
+	from umlEntity: UML!Class(
+		not(umlEntity.getAppliedStereotype('SpringModel::CrudEntity').oclIsUndefined())
+	)
+	to ecoreEntity: CRUDSpring!CrudEntity
+
+}
+
+-- Direct transformation from UML Property to Ecore Property
+rule Property{
+	from umlProperty: UML!Property(
+		--check if property belongs to a class
+		umlProperty.owner.oclIsKindOf(UML!Class)
+	)
+	to ecoreProperty: CRUDSpring!Property(
+		name <- umlProperty.name,
+		size <- umlProperty.upper
+	)
+}
+
+-- Direct transformation from UML Primitive types to Ecore PrimitiveType
+rule PrimitiveProperty extends Property{
+	from umlProperty: UML!Property(
+		-- check if it is a primitive type
+		umlProperty.type.oclIsKindOf(UML!PrimitiveType) 
+	)
+	to ecoreProperty: CRUDSpring!Property(
+		--lazy rule
+		type <- thisModule.PrimiteType(umlProperty.type) 
+	)
+}
+
+lazy rule PrimiteType{
+	from umlType: UML!Type
+	to ecoreType: CRUDSpring!PrimitiveType(
+		--get the corresponding type of a UML in ecore
+		type <- thisModule.typeMap.get(umlType.name) 
+	)
+}
+
+--Direct transformation from UML NonPrimitive types to Ecore ReferenceType
+rule ReferenceProperty extends Property{
+	from umlProperty: UML!Property(
+		--check if it isnt a primitive type
+		not umlProperty.type.oclIsKindOf(UML!PrimitiveType) 
+	)
+	to ecoreProperty: CRUDSpring!Property(
+		--lazy rule
+		type <- thisModule.ReferenceType(umlProperty.type)
+	)
+	do{
+		--save the map between UML Property to Ecore Property
+		thisModule.propertyMap <- thisModule.propertyMap.including(umlProperty, ecoreProperty);
+	}
+}
+
+
+lazy rule ReferenceType{
+	from umlType: UML!Type
+	to ecoreType: CRUDSpring!ReferenceType(
+		entity <- umlType
+	)
+}
+
+-- set load and operation values of a ReferenceType
+rule Association{
+	from umlAssociation: UML!Association(
+		--check if it is a EntityAssociation
+		not(umlAssociation.getAppliedStereotype('SpringModel::EntityAssociation').oclIsUndefined())
+	)
+	using{
+		--values of the stereotype
+		loadValue: Boolean = umlAssociation.getStereotypeProperty('SpringModel::EntityAssociation', 'load');
+		operationValue: UML!EnumerationLiteral = umlAssociation.getStereotypeProperty('SpringModel::EntityAssociation', 'operation');
+	}
+	do{	
+		--for each property in the association member end, make sure that it has been mapped on ReferenceProperty rule 
+		--and set the load and operation attributes
+		for (umlProp in umlAssociation.memberEnd){
+			if (not thisModule.propertyMap.get(umlProp).oclIsUndefined()){
+				thisModule.propertyMap.get(umlProp).type.load <- loadValue;
+				--set the corresponding UML Database Operation in Ecore			
+				thisModule.propertyMap.get(umlProp).type.operation <- thisModule.operationMap.get(operationValue.name);
+			}
+		}
+	}
+}
