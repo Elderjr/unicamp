@@ -1,0 +1,5713 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>StringUtils.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_1'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/*</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_2'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Licensed to the Apache Software Foundation (ASF) under one or more</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_3'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * contributor license agreements.  See the NOTICE file distributed with</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_4'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * this work for additional information regarding copyright ownership.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_5'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * The ASF licenses this file to You under the Apache License, Version 2.0</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_6'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * (the &#34;License&#34;); you may not use this file except in compliance with</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_7'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * the License.  You may obtain a copy of the License at</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_8'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_9'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *      http://www.apache.org/licenses/LICENSE-2.0</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_10'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_11'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Unless required by applicable law or agreed to in writing, software</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_12'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * distributed under the License is distributed on an &#34;AS IS&#34; BASIS,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_13'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_14'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * See the License for the specific language governing permissions and</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_15'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * limitations under the License.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_16'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_17'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_18'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package org.apache.commons.codec.binary;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_19'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_20'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.io.UnsupportedEncodingException;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_21'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.nio.charset.Charset;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_22'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_23'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.apache.commons.codec.CharEncoding;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_24'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.apache.commons.codec.Charsets;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_25'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_26'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_27'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Converts String to and from bytes using the encodings required by the Java specification. These encodings are</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_28'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * specified in &#60;a href=&#34;http://download.oracle.com/javase/6/docs/api/java/nio/charset/Charset.html&#34;&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_29'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Standard charsets&#60;/a&#62;.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_30'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_31'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * &#60;p&#62;This class is immutable and thread-safe.&#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_32'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_33'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * @see CharEncoding</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_34'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * @see &#60;a href=&#34;http://download.oracle.com/javase/6/docs/api/java/nio/charset/Charset.html&#34;&#62;Standard charsets&#60;/a&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_35'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * @version $Id: StringUtils.java 1634456 2014-10-27 05:26:56Z ggregory $</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_36'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * @since 1.4</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_37'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_38'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>public class StringUtils {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_39'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_40'/>
+40
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_40'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_41'/>
+41
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_41'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_42'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Compares two CharSequences, returning &#60;code&#62;true&#60;/code&#62; if they represent equal sequences of characters.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_43'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_44'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_45'/>
+45
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_45'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_46'/>
+46
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_46'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;code&#62;null&#60;/code&#62;s are handled without exceptions. Two &#60;code&#62;null&#60;/code&#62; references are considered to be equal.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_47'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * The comparison is case sensitive.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_48'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_49'/>
+49
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_49'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_50'/>
+50
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_50'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;pre&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_51'/>
+51
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_51'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * StringUtils.equals(null, null)   = true</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_52'/>
+52
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_52'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * StringUtils.equals(null, &#34;abc&#34;)  = false</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_53'/>
+53
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_53'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * StringUtils.equals(&#34;abc&#34;, null)  = false</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_54'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * StringUtils.equals(&#34;abc&#34;, &#34;abc&#34;) = true</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_55'/>
+55
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_55'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * StringUtils.equals(&#34;abc&#34;, &#34;ABC&#34;) = false</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_56'/>
+56
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_56'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;/pre&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_57'/>
+57
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_57'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_58'/>
+58
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_58'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_59'/>
+59
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_59'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Copied from Apache Commons Lang r1583482 on April 10, 2014 (day of 3.3.2 release).</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_60'/>
+60
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_60'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_61'/>
+61
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_61'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_62'/>
+62
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_62'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @see Object#equals(Object)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_63'/>
+63
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_63'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param cs1</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_64'/>
+64
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_64'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *            the first CharSequence, may be &#60;code&#62;null&#60;/code&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_65'/>
+65
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_65'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param cs2</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_66'/>
+66
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_66'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *            the second CharSequence, may be &#60;code&#62;null&#60;/code&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_67'/>
+67
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_67'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return &#60;code&#62;true&#60;/code&#62; if the CharSequences are equal (case-sensitive), or both &#60;code&#62;null&#60;/code&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_68'/>
+68
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_68'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @since 1.10</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_69'/>
+69
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_69'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_70'/>
+70
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_70'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static boolean equals(final CharSequence cs1, final CharSequence cs2) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_71'/>
+71
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_71'>1</a>
+<span>
+1. equals : removed conditional - replaced equality check with false &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (cs1 == cs2) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_72'/>
+72
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_72'>2</a>
+<span>
+1. equals : replaced boolean return with false for org/apache/commons/codec/binary/StringUtils::equals &rarr; KILLED<br/>
+2. equals : Substituted 1 with 0 &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return true;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_73'/>
+73
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_73'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_74'/>
+74
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_74'>2</a>
+<span>
+1. equals : removed conditional - replaced equality check with false &rarr; KILLED<br/>
+2. equals : removed conditional - replaced equality check with false &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (cs1 == null || cs2 == null) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_75'/>
+75
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_75'>2</a>
+<span>
+1. equals : replaced boolean return with true for org/apache/commons/codec/binary/StringUtils::equals &rarr; KILLED<br/>
+2. equals : Substituted 0 with 1 &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return false;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_76'/>
+76
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_76'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_77'/>
+77
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_77'>2</a>
+<span>
+1. equals : removed conditional - replaced equality check with false &rarr; SURVIVED<br/>
+2. equals : removed conditional - replaced equality check with false &rarr; SURVIVED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        if (cs1 instanceof String &#38;&#38; cs2 instanceof String) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_78'/>
+78
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_78'>2</a>
+<span>
+1. equals : replaced boolean return with false for org/apache/commons/codec/binary/StringUtils::equals &rarr; KILLED<br/>
+2. equals : replaced boolean return with true for org/apache/commons/codec/binary/StringUtils::equals &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return cs1.equals(cs2);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_79'/>
+79
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_79'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_80'/>
+80
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_80'>5</a>
+<span>
+1. equals : replaced boolean return with false for org/apache/commons/codec/binary/StringUtils::equals &rarr; NO_COVERAGE<br/>
+2. equals : replaced boolean return with true for org/apache/commons/codec/binary/StringUtils::equals &rarr; NO_COVERAGE<br/>
+3. equals : Substituted 0 with 1 &rarr; NO_COVERAGE<br/>
+4. equals : Substituted 0 with 1 &rarr; NO_COVERAGE<br/>
+5. equals : Substituted 0 with 1 &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>        return CharSequenceUtils.regionMatches(cs1, false, 0, cs2, 0, Math.max(cs1.length(), cs2.length()));</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_81'/>
+81
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_81'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_82'/>
+82
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_82'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_83'/>
+83
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_83'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_84'/>
+84
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_84'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Calls {@link String#getBytes(Charset)}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_85'/>
+85
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_85'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_86'/>
+86
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_86'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param string</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_87'/>
+87
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_87'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *            The string to encode (if null, return null).</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_88'/>
+88
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_88'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param charset</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_89'/>
+89
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_89'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *            The {@link Charset} to encode the &#60;code&#62;String&#60;/code&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_90'/>
+90
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_90'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return the encoded bytes</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_91'/>
+91
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_91'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_92'/>
+92
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_92'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private static byte[] getBytes(final String string, final Charset charset) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_93'/>
+93
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_93'>1</a>
+<span>
+1. getBytes : removed conditional - replaced equality check with false &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (string == null) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_94'/>
+94
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_94'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            return null;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_95'/>
+95
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_95'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_96'/>
+96
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_96'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        return string.getBytes(charset);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_97'/>
+97
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_97'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_98'/>
+98
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_98'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_99'/>
+99
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_99'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_100'/>
+100
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_100'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Encodes the given string into a sequence of bytes using the ISO-8859-1 charset, storing the result into a new</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_101'/>
+101
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_101'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * byte array.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_102'/>
+102
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_102'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_103'/>
+103
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_103'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param string</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_104'/>
+104
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_104'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *            the String to encode, may be &#60;code&#62;null&#60;/code&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_105'/>
+105
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_105'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return encoded bytes, or &#60;code&#62;null&#60;/code&#62; if the input string was &#60;code&#62;null&#60;/code&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_106'/>
+106
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_106'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws NullPointerException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_107'/>
+107
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_107'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             Thrown if {@link Charsets#ISO_8859_1} is not initialized, which should never happen since it is</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_108'/>
+108
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_108'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             required by the Java platform specification.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_109'/>
+109
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_109'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @since As of 1.7, throws {@link NullPointerException} instead of UnsupportedEncodingException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_110'/>
+110
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_110'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @see &#60;a href=&#34;http://download.oracle.com/javase/6/docs/api/java/nio/charset/Charset.html&#34;&#62;Standard charsets&#60;/a&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_111'/>
+111
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_111'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @see #getBytesUnchecked(String, String)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_112'/>
+112
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_112'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_113'/>
+113
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_113'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static byte[] getBytesIso8859_1(final String string) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_114'/>
+114
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_114'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        return getBytes(string, Charsets.ISO_8859_1);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_115'/>
+115
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_115'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_116'/>
+116
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_116'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_117'/>
+117
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_117'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_118'/>
+118
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_118'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_119'/>
+119
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_119'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Encodes the given string into a sequence of bytes using the named charset, storing the result into a new byte</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_120'/>
+120
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_120'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * array.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_121'/>
+121
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_121'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_122'/>
+122
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_122'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * This method catches {@link UnsupportedEncodingException} and rethrows it as {@link IllegalStateException}, which</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_123'/>
+123
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_123'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * should never happen for a required charset name. Use this method when the encoding is required to be in the JRE.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_124'/>
+124
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_124'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_125'/>
+125
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_125'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_126'/>
+126
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_126'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param string</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_127'/>
+127
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_127'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *            the String to encode, may be &#60;code&#62;null&#60;/code&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_128'/>
+128
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_128'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param charsetName</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_129'/>
+129
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_129'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *            The name of a required {@link java.nio.charset.Charset}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_130'/>
+130
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_130'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return encoded bytes, or &#60;code&#62;null&#60;/code&#62; if the input string was &#60;code&#62;null&#60;/code&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_131'/>
+131
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_131'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws IllegalStateException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_132'/>
+132
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_132'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             Thrown when a {@link UnsupportedEncodingException} is caught, which should never happen for a</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_133'/>
+133
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_133'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             required charset name.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_134'/>
+134
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_134'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @see CharEncoding</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_135'/>
+135
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_135'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @see String#getBytes(String)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_136'/>
+136
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_136'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_137'/>
+137
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_137'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static byte[] getBytesUnchecked(final String string, final String charsetName) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_138'/>
+138
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_138'>1</a>
+<span>
+1. getBytesUnchecked : removed conditional - replaced equality check with false &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (string == null) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_139'/>
+139
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_139'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            return null;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_140'/>
+140
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_140'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_141'/>
+141
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_141'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        try {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_142'/>
+142
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_142'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            return string.getBytes(charsetName);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_143'/>
+143
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_143'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        } catch (final UnsupportedEncodingException e) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_144'/>
+144
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_144'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            throw StringUtils.newIllegalStateException(charsetName, e);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_145'/>
+145
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_145'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_146'/>
+146
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_146'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_147'/>
+147
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_147'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_148'/>
+148
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_148'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_149'/>
+149
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_149'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Encodes the given string into a sequence of bytes using the US-ASCII charset, storing the result into a new byte</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_150'/>
+150
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_150'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * array.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_151'/>
+151
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_151'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_152'/>
+152
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_152'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param string</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_153'/>
+153
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_153'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *            the String to encode, may be &#60;code&#62;null&#60;/code&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_154'/>
+154
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_154'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return encoded bytes, or &#60;code&#62;null&#60;/code&#62; if the input string was &#60;code&#62;null&#60;/code&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_155'/>
+155
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_155'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws NullPointerException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_156'/>
+156
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_156'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             Thrown if {@link Charsets#US_ASCII} is not initialized, which should never happen since it is</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_157'/>
+157
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_157'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             required by the Java platform specification.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_158'/>
+158
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_158'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @since As of 1.7, throws {@link NullPointerException} instead of UnsupportedEncodingException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_159'/>
+159
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_159'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @see &#60;a href=&#34;http://download.oracle.com/javase/6/docs/api/java/nio/charset/Charset.html&#34;&#62;Standard charsets&#60;/a&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_160'/>
+160
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_160'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @see #getBytesUnchecked(String, String)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_161'/>
+161
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_161'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_162'/>
+162
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_162'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static byte[] getBytesUsAscii(final String string) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_163'/>
+163
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_163'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        return getBytes(string, Charsets.US_ASCII);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_164'/>
+164
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_164'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_165'/>
+165
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_165'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_166'/>
+166
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_166'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_167'/>
+167
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_167'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Encodes the given string into a sequence of bytes using the UTF-16 charset, storing the result into a new byte</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_168'/>
+168
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_168'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * array.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_169'/>
+169
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_169'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_170'/>
+170
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_170'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param string</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_171'/>
+171
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_171'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *            the String to encode, may be &#60;code&#62;null&#60;/code&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_172'/>
+172
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_172'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return encoded bytes, or &#60;code&#62;null&#60;/code&#62; if the input string was &#60;code&#62;null&#60;/code&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_173'/>
+173
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_173'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws NullPointerException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_174'/>
+174
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_174'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             Thrown if {@link Charsets#UTF_16} is not initialized, which should never happen since it is</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_175'/>
+175
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_175'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             required by the Java platform specification.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_176'/>
+176
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_176'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @since As of 1.7, throws {@link NullPointerException} instead of UnsupportedEncodingException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_177'/>
+177
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_177'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @see &#60;a href=&#34;http://download.oracle.com/javase/6/docs/api/java/nio/charset/Charset.html&#34;&#62;Standard charsets&#60;/a&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_178'/>
+178
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_178'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @see #getBytesUnchecked(String, String)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_179'/>
+179
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_179'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_180'/>
+180
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_180'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static byte[] getBytesUtf16(final String string) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_181'/>
+181
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_181'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        return getBytes(string, Charsets.UTF_16);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_182'/>
+182
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_182'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_183'/>
+183
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_183'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_184'/>
+184
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_184'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_185'/>
+185
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_185'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Encodes the given string into a sequence of bytes using the UTF-16BE charset, storing the result into a new byte</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_186'/>
+186
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_186'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * array.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_187'/>
+187
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_187'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_188'/>
+188
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_188'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param string</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_189'/>
+189
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_189'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *            the String to encode, may be &#60;code&#62;null&#60;/code&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_190'/>
+190
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_190'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return encoded bytes, or &#60;code&#62;null&#60;/code&#62; if the input string was &#60;code&#62;null&#60;/code&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_191'/>
+191
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_191'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws NullPointerException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_192'/>
+192
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_192'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             Thrown if {@link Charsets#UTF_16BE} is not initialized, which should never happen since it is</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_193'/>
+193
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_193'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             required by the Java platform specification.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_194'/>
+194
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_194'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @since As of 1.7, throws {@link NullPointerException} instead of UnsupportedEncodingException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_195'/>
+195
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_195'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @see &#60;a href=&#34;http://download.oracle.com/javase/6/docs/api/java/nio/charset/Charset.html&#34;&#62;Standard charsets&#60;/a&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_196'/>
+196
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_196'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @see #getBytesUnchecked(String, String)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_197'/>
+197
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_197'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_198'/>
+198
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_198'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static byte[] getBytesUtf16Be(final String string) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_199'/>
+199
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_199'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        return getBytes(string, Charsets.UTF_16BE);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_200'/>
+200
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_200'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_201'/>
+201
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_201'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_202'/>
+202
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_202'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_203'/>
+203
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_203'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Encodes the given string into a sequence of bytes using the UTF-16LE charset, storing the result into a new byte</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_204'/>
+204
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_204'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * array.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_205'/>
+205
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_205'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_206'/>
+206
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_206'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param string</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_207'/>
+207
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_207'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *            the String to encode, may be &#60;code&#62;null&#60;/code&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_208'/>
+208
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_208'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return encoded bytes, or &#60;code&#62;null&#60;/code&#62; if the input string was &#60;code&#62;null&#60;/code&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_209'/>
+209
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_209'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws NullPointerException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_210'/>
+210
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_210'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             Thrown if {@link Charsets#UTF_16LE} is not initialized, which should never happen since it is</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_211'/>
+211
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_211'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             required by the Java platform specification.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_212'/>
+212
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_212'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @since As of 1.7, throws {@link NullPointerException} instead of UnsupportedEncodingException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_213'/>
+213
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_213'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @see &#60;a href=&#34;http://download.oracle.com/javase/6/docs/api/java/nio/charset/Charset.html&#34;&#62;Standard charsets&#60;/a&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_214'/>
+214
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_214'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @see #getBytesUnchecked(String, String)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_215'/>
+215
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_215'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_216'/>
+216
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_216'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static byte[] getBytesUtf16Le(final String string) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_217'/>
+217
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_217'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        return getBytes(string, Charsets.UTF_16LE);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_218'/>
+218
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_218'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_219'/>
+219
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_219'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_220'/>
+220
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_220'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_221'/>
+221
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_221'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Encodes the given string into a sequence of bytes using the UTF-8 charset, storing the result into a new byte</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_222'/>
+222
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_222'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * array.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_223'/>
+223
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_223'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_224'/>
+224
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_224'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param string</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_225'/>
+225
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_225'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *            the String to encode, may be &#60;code&#62;null&#60;/code&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_226'/>
+226
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_226'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return encoded bytes, or &#60;code&#62;null&#60;/code&#62; if the input string was &#60;code&#62;null&#60;/code&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_227'/>
+227
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_227'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws NullPointerException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_228'/>
+228
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_228'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             Thrown if {@link Charsets#UTF_8} is not initialized, which should never happen since it is</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_229'/>
+229
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_229'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             required by the Java platform specification.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_230'/>
+230
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_230'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @since As of 1.7, throws {@link NullPointerException} instead of UnsupportedEncodingException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_231'/>
+231
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_231'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @see &#60;a href=&#34;http://download.oracle.com/javase/6/docs/api/java/nio/charset/Charset.html&#34;&#62;Standard charsets&#60;/a&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_232'/>
+232
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_232'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @see #getBytesUnchecked(String, String)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_233'/>
+233
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_233'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_234'/>
+234
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_234'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static byte[] getBytesUtf8(final String string) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_235'/>
+235
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_235'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        return getBytes(string, Charsets.UTF_8);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_236'/>
+236
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_236'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_237'/>
+237
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_237'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_238'/>
+238
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_238'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private static IllegalStateException newIllegalStateException(final String charsetName,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_239'/>
+239
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_239'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                                                                  final UnsupportedEncodingException e) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_240'/>
+240
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_240'>2</a>
+<span>
+1. newIllegalStateException : removed call to java/lang/StringBuilder::&#60;init&#62; &rarr; KILLED<br/>
+2. newIllegalStateException : removed call to java/lang/IllegalStateException::&#60;init&#62; &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new IllegalStateException(charsetName + &#34;: &#34; + e);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_241'/>
+241
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_241'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_242'/>
+242
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_242'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_243'/>
+243
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_243'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_244'/>
+244
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_244'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Constructs a new &#60;code&#62;String&#60;/code&#62; by decoding the specified array of bytes using the given charset.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_245'/>
+245
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_245'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_246'/>
+246
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_246'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param bytes</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_247'/>
+247
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_247'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *            The bytes to be decoded into characters</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_248'/>
+248
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_248'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param charset</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_249'/>
+249
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_249'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *            The {@link Charset} to encode the &#60;code&#62;String&#60;/code&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_250'/>
+250
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_250'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return A new &#60;code&#62;String&#60;/code&#62; decoded from the specified array of bytes using the given charset,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_251'/>
+251
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_251'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *         or &#60;code&#62;null&#60;/code&#62; if the input byte array was &#60;code&#62;null&#60;/code&#62;.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_252'/>
+252
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_252'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws NullPointerException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_253'/>
+253
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_253'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             Thrown if {@link Charsets#UTF_8} is not initialized, which should never happen since it is</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_254'/>
+254
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_254'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             required by the Java platform specification.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_255'/>
+255
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_255'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_256'/>
+256
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_256'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private static String newString(final byte[] bytes, final Charset charset) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_257'/>
+257
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_257'>3</a>
+<span>
+1. newString : removed call to java/lang/String::&#60;init&#62; &rarr; KILLED<br/>
+2. newString : replaced return value with &#34;&#34; for org/apache/commons/codec/binary/StringUtils::newString &rarr; KILLED<br/>
+3. newString : removed conditional - replaced equality check with false &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return bytes == null ? null : new String(bytes, charset);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_258'/>
+258
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_258'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_259'/>
+259
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_259'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_260'/>
+260
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_260'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_261'/>
+261
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_261'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Constructs a new &#60;code&#62;String&#60;/code&#62; by decoding the specified array of bytes using the given charset.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_262'/>
+262
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_262'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_263'/>
+263
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_263'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * This method catches {@link UnsupportedEncodingException} and re-throws it as {@link IllegalStateException}, which</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_264'/>
+264
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_264'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * should never happen for a required charset name. Use this method when the encoding is required to be in the JRE.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_265'/>
+265
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_265'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_266'/>
+266
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_266'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_267'/>
+267
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_267'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param bytes</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_268'/>
+268
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_268'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *            The bytes to be decoded into characters, may be &#60;code&#62;null&#60;/code&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_269'/>
+269
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_269'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param charsetName</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_270'/>
+270
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_270'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *            The name of a required {@link java.nio.charset.Charset}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_271'/>
+271
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_271'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return A new &#60;code&#62;String&#60;/code&#62; decoded from the specified array of bytes using the given charset,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_272'/>
+272
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_272'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *         or &#60;code&#62;null&#60;/code&#62; if the input byte array was &#60;code&#62;null&#60;/code&#62;.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_273'/>
+273
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_273'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws IllegalStateException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_274'/>
+274
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_274'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             Thrown when a {@link UnsupportedEncodingException} is caught, which should never happen for a</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_275'/>
+275
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_275'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             required charset name.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_276'/>
+276
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_276'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @see CharEncoding</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_277'/>
+277
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_277'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @see String#String(byte[], String)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_278'/>
+278
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_278'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_279'/>
+279
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_279'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static String newString(final byte[] bytes, final String charsetName) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_280'/>
+280
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_280'>1</a>
+<span>
+1. newString : removed conditional - replaced equality check with false &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (bytes == null) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_281'/>
+281
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_281'>1</a>
+<span>
+1. newString : replaced return value with &#34;&#34; for org/apache/commons/codec/binary/StringUtils::newString &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return null;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_282'/>
+282
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_282'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_283'/>
+283
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_283'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        try {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_284'/>
+284
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_284'>2</a>
+<span>
+1. newString : removed call to java/lang/String::&#60;init&#62; &rarr; KILLED<br/>
+2. newString : replaced return value with &#34;&#34; for org/apache/commons/codec/binary/StringUtils::newString &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return new String(bytes, charsetName);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_285'/>
+285
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_285'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        } catch (final UnsupportedEncodingException e) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_286'/>
+286
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_286'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            throw StringUtils.newIllegalStateException(charsetName, e);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_287'/>
+287
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_287'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_288'/>
+288
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_288'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_289'/>
+289
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_289'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_290'/>
+290
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_290'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_291'/>
+291
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_291'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Constructs a new &#60;code&#62;String&#60;/code&#62; by decoding the specified array of bytes using the ISO-8859-1 charset.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_292'/>
+292
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_292'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_293'/>
+293
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_293'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param bytes</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_294'/>
+294
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_294'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *            The bytes to be decoded into characters, may be &#60;code&#62;null&#60;/code&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_295'/>
+295
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_295'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return A new &#60;code&#62;String&#60;/code&#62; decoded from the specified array of bytes using the ISO-8859-1 charset, or</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_296'/>
+296
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_296'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *         &#60;code&#62;null&#60;/code&#62; if the input byte array was &#60;code&#62;null&#60;/code&#62;.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_297'/>
+297
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_297'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws NullPointerException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_298'/>
+298
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_298'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             Thrown if {@link Charsets#ISO_8859_1} is not initialized, which should never happen since it is</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_299'/>
+299
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_299'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             required by the Java platform specification.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_300'/>
+300
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_300'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @since As of 1.7, throws {@link NullPointerException} instead of UnsupportedEncodingException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_301'/>
+301
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_301'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_302'/>
+302
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_302'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static String newStringIso8859_1(final byte[] bytes) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_303'/>
+303
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_303'>2</a>
+<span>
+1. newStringIso8859_1 : removed call to java/lang/String::&#60;init&#62; &rarr; KILLED<br/>
+2. newStringIso8859_1 : replaced return value with &#34;&#34; for org/apache/commons/codec/binary/StringUtils::newStringIso8859_1 &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new String(bytes, Charsets.ISO_8859_1);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_304'/>
+304
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_304'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_305'/>
+305
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_305'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_306'/>
+306
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_306'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_307'/>
+307
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_307'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Constructs a new &#60;code&#62;String&#60;/code&#62; by decoding the specified array of bytes using the US-ASCII charset.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_308'/>
+308
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_308'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_309'/>
+309
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_309'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param bytes</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_310'/>
+310
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_310'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *            The bytes to be decoded into characters</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_311'/>
+311
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_311'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return A new &#60;code&#62;String&#60;/code&#62; decoded from the specified array of bytes using the US-ASCII charset,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_312'/>
+312
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_312'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *         or &#60;code&#62;null&#60;/code&#62; if the input byte array was &#60;code&#62;null&#60;/code&#62;.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_313'/>
+313
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_313'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws NullPointerException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_314'/>
+314
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_314'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             Thrown if {@link Charsets#US_ASCII} is not initialized, which should never happen since it is</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_315'/>
+315
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_315'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             required by the Java platform specification.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_316'/>
+316
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_316'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @since As of 1.7, throws {@link NullPointerException} instead of UnsupportedEncodingException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_317'/>
+317
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_317'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_318'/>
+318
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_318'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static String newStringUsAscii(final byte[] bytes) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_319'/>
+319
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_319'>2</a>
+<span>
+1. newStringUsAscii : removed call to java/lang/String::&#60;init&#62; &rarr; KILLED<br/>
+2. newStringUsAscii : replaced return value with &#34;&#34; for org/apache/commons/codec/binary/StringUtils::newStringUsAscii &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new String(bytes, Charsets.US_ASCII);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_320'/>
+320
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_320'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_321'/>
+321
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_321'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_322'/>
+322
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_322'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_323'/>
+323
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_323'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Constructs a new &#60;code&#62;String&#60;/code&#62; by decoding the specified array of bytes using the UTF-16 charset.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_324'/>
+324
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_324'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_325'/>
+325
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_325'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param bytes</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_326'/>
+326
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_326'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *            The bytes to be decoded into characters</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_327'/>
+327
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_327'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return A new &#60;code&#62;String&#60;/code&#62; decoded from the specified array of bytes using the UTF-16 charset</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_328'/>
+328
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_328'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *         or &#60;code&#62;null&#60;/code&#62; if the input byte array was &#60;code&#62;null&#60;/code&#62;.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_329'/>
+329
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_329'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws NullPointerException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_330'/>
+330
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_330'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             Thrown if {@link Charsets#UTF_16} is not initialized, which should never happen since it is</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_331'/>
+331
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_331'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             required by the Java platform specification.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_332'/>
+332
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_332'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @since As of 1.7, throws {@link NullPointerException} instead of UnsupportedEncodingException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_333'/>
+333
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_333'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_334'/>
+334
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_334'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static String newStringUtf16(final byte[] bytes) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_335'/>
+335
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_335'>2</a>
+<span>
+1. newStringUtf16 : removed call to java/lang/String::&#60;init&#62; &rarr; KILLED<br/>
+2. newStringUtf16 : replaced return value with &#34;&#34; for org/apache/commons/codec/binary/StringUtils::newStringUtf16 &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new String(bytes, Charsets.UTF_16);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_336'/>
+336
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_336'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_337'/>
+337
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_337'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_338'/>
+338
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_338'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_339'/>
+339
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_339'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Constructs a new &#60;code&#62;String&#60;/code&#62; by decoding the specified array of bytes using the UTF-16BE charset.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_340'/>
+340
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_340'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_341'/>
+341
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_341'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param bytes</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_342'/>
+342
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_342'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *            The bytes to be decoded into characters</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_343'/>
+343
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_343'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return A new &#60;code&#62;String&#60;/code&#62; decoded from the specified array of bytes using the UTF-16BE charset,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_344'/>
+344
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_344'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *         or &#60;code&#62;null&#60;/code&#62; if the input byte array was &#60;code&#62;null&#60;/code&#62;.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_345'/>
+345
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_345'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws NullPointerException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_346'/>
+346
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_346'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             Thrown if {@link Charsets#UTF_16BE} is not initialized, which should never happen since it is</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_347'/>
+347
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_347'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             required by the Java platform specification.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_348'/>
+348
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_348'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @since As of 1.7, throws {@link NullPointerException} instead of UnsupportedEncodingException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_349'/>
+349
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_349'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_350'/>
+350
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_350'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static String newStringUtf16Be(final byte[] bytes) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_351'/>
+351
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_351'>2</a>
+<span>
+1. newStringUtf16Be : removed call to java/lang/String::&#60;init&#62; &rarr; KILLED<br/>
+2. newStringUtf16Be : replaced return value with &#34;&#34; for org/apache/commons/codec/binary/StringUtils::newStringUtf16Be &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new String(bytes, Charsets.UTF_16BE);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_352'/>
+352
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_352'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_353'/>
+353
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_353'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_354'/>
+354
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_354'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_355'/>
+355
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_355'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Constructs a new &#60;code&#62;String&#60;/code&#62; by decoding the specified array of bytes using the UTF-16LE charset.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_356'/>
+356
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_356'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_357'/>
+357
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_357'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param bytes</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_358'/>
+358
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_358'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *            The bytes to be decoded into characters</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_359'/>
+359
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_359'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return A new &#60;code&#62;String&#60;/code&#62; decoded from the specified array of bytes using the UTF-16LE charset,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_360'/>
+360
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_360'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *         or &#60;code&#62;null&#60;/code&#62; if the input byte array was &#60;code&#62;null&#60;/code&#62;.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_361'/>
+361
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_361'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws NullPointerException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_362'/>
+362
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_362'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             Thrown if {@link Charsets#UTF_16LE} is not initialized, which should never happen since it is</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_363'/>
+363
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_363'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             required by the Java platform specification.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_364'/>
+364
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_364'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @since As of 1.7, throws {@link NullPointerException} instead of UnsupportedEncodingException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_365'/>
+365
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_365'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_366'/>
+366
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_366'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static String newStringUtf16Le(final byte[] bytes) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_367'/>
+367
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_367'>2</a>
+<span>
+1. newStringUtf16Le : removed call to java/lang/String::&#60;init&#62; &rarr; KILLED<br/>
+2. newStringUtf16Le : replaced return value with &#34;&#34; for org/apache/commons/codec/binary/StringUtils::newStringUtf16Le &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new String(bytes, Charsets.UTF_16LE);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_368'/>
+368
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_368'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_369'/>
+369
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_369'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_370'/>
+370
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_370'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_371'/>
+371
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_371'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Constructs a new &#60;code&#62;String&#60;/code&#62; by decoding the specified array of bytes using the UTF-8 charset.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_372'/>
+372
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_372'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_373'/>
+373
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_373'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param bytes</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_374'/>
+374
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_374'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *            The bytes to be decoded into characters</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_375'/>
+375
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_375'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return A new &#60;code&#62;String&#60;/code&#62; decoded from the specified array of bytes using the UTF-8 charset,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_376'/>
+376
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_376'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *         or &#60;code&#62;null&#60;/code&#62; if the input byte array was &#60;code&#62;null&#60;/code&#62;.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_377'/>
+377
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_377'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws NullPointerException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_378'/>
+378
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_378'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             Thrown if {@link Charsets#UTF_8} is not initialized, which should never happen since it is</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_379'/>
+379
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_379'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *             required by the Java platform specification.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_380'/>
+380
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_380'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @since As of 1.7, throws {@link NullPointerException} instead of UnsupportedEncodingException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_381'/>
+381
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_381'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_382'/>
+382
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_382'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static String newStringUtf8(final byte[] bytes) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_383'/>
+383
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_383'>1</a>
+<span>
+1. newStringUtf8 : replaced return value with &#34;&#34; for org/apache/commons/codec/binary/StringUtils::newStringUtf8 &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return newString(bytes, Charsets.UTF_8);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_384'/>
+384
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_384'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_385'/>
+385
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_385'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@264f5016_386'/>
+386
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_386'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@264f5016_71'>71</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_71'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>org.apache.commons.codec.language.DoubleMetaphoneTest.testCodec184(org.apache.commons.codec.language.DoubleMetaphoneTest)</span></span> removed conditional - replaced equality check with false &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@264f5016_72'>72</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_72'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>org.apache.commons.codec.language.DoubleMetaphoneTest.testCodec184(org.apache.commons.codec.language.DoubleMetaphoneTest)</span></span> replaced boolean return with false for org/apache/commons/codec/binary/StringUtils::equals &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>org.apache.commons.codec.language.DoubleMetaphoneTest.testCodec184(org.apache.commons.codec.language.DoubleMetaphoneTest)</span></span> Substituted 1 with 0 &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@264f5016_74'>74</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_74'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>org.apache.commons.codec.language.DoubleMetaphoneTest.testNTilde(org.apache.commons.codec.language.DoubleMetaphoneTest)</span></span> removed conditional - replaced equality check with false &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>org.apache.commons.codec.language.DoubleMetaphoneTest.testCodec184(org.apache.commons.codec.language.DoubleMetaphoneTest)</span></span> removed conditional - replaced equality check with false &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@264f5016_75'>75</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_75'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>org.apache.commons.codec.language.DoubleMetaphoneTest.testCodec184(org.apache.commons.codec.language.DoubleMetaphoneTest)</span></span> replaced boolean return with true for org/apache/commons/codec/binary/StringUtils::equals &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>org.apache.commons.codec.language.DoubleMetaphoneTest.testCodec184(org.apache.commons.codec.language.DoubleMetaphoneTest)</span></span> Substituted 0 with 1 &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@264f5016_77'>77</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_77'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>none</span></span> removed conditional - replaced equality check with false &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>none</span></span> removed conditional - replaced equality check with false &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@264f5016_78'>78</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_78'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>org.apache.commons.codec.language.DoubleMetaphoneTest.testNTilde(org.apache.commons.codec.language.DoubleMetaphoneTest)</span></span> replaced boolean return with false for org/apache/commons/codec/binary/StringUtils::equals &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>org.apache.commons.codec.language.DoubleMetaphoneTest.testIsDoubleMetaphoneNotEqual(org.apache.commons.codec.language.DoubleMetaphoneTest)</span></span> replaced boolean return with true for org/apache/commons/codec/binary/StringUtils::equals &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@264f5016_80'>80</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_80'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>none</span></span> replaced boolean return with false for org/apache/commons/codec/binary/StringUtils::equals &rarr; NO_COVERAGE</p> <p class='NO_COVERAGE'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>none</span></span> replaced boolean return with true for org/apache/commons/codec/binary/StringUtils::equals &rarr; NO_COVERAGE</p> <p class='NO_COVERAGE'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>none</span></span> Substituted 0 with 1 &rarr; NO_COVERAGE</p> <p class='NO_COVERAGE'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>none</span></span> Substituted 0 with 1 &rarr; NO_COVERAGE</p> <p class='NO_COVERAGE'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>none</span></span> Substituted 0 with 1 &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@264f5016_93'>93</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_93'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getBytes<br/><b>Killed by : </b>org.apache.commons.codec.binary.Base64Test.testStringToByteVariations(org.apache.commons.codec.binary.Base64Test)</span></span> removed conditional - replaced equality check with false &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@264f5016_138'>138</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_138'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getBytesUnchecked<br/><b>Killed by : </b>org.apache.commons.codec.binary.StringUtilsTest.testGetBytesUncheckedNullInput(org.apache.commons.codec.binary.StringUtilsTest)</span></span> removed conditional - replaced equality check with false &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@264f5016_240'>240</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_240'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>newIllegalStateException<br/><b>Killed by : </b>org.apache.commons.codec.binary.StringUtilsTest.testGetBytesUncheckedBadName(org.apache.commons.codec.binary.StringUtilsTest)</span></span> removed call to java/lang/StringBuilder::&#60;init&#62; &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>newIllegalStateException<br/><b>Killed by : </b>org.apache.commons.codec.binary.StringUtilsTest.testGetBytesUncheckedBadName(org.apache.commons.codec.binary.StringUtilsTest)</span></span> removed call to java/lang/IllegalStateException::&#60;init&#62; &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@264f5016_257'>257</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_257'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>newString<br/><b>Killed by : </b>org.apache.commons.codec.binary.StringUtilsTest.testNewStringUtf8(org.apache.commons.codec.binary.StringUtilsTest)</span></span> removed call to java/lang/String::&#60;init&#62; &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>newString<br/><b>Killed by : </b>org.apache.commons.codec.binary.StringUtilsTest.testNewStringUtf8(org.apache.commons.codec.binary.StringUtilsTest)</span></span> replaced return value with &#34;&#34; for org/apache/commons/codec/binary/StringUtils::newString &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>newString<br/><b>Killed by : </b>org.apache.commons.codec.binary.Base64Test.testByteToStringVariations(org.apache.commons.codec.binary.Base64Test)</span></span> removed conditional - replaced equality check with false &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@264f5016_280'>280</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_280'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>newString<br/><b>Killed by : </b>org.apache.commons.codec.binary.StringUtilsTest.testNewStringNullInput(org.apache.commons.codec.binary.StringUtilsTest)</span></span> removed conditional - replaced equality check with false &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@264f5016_281'>281</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_281'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>newString<br/><b>Killed by : </b>org.apache.commons.codec.binary.StringUtilsTest.testNewStringNullInput(org.apache.commons.codec.binary.StringUtilsTest)</span></span> replaced return value with &#34;&#34; for org/apache/commons/codec/binary/StringUtils::newString &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@264f5016_284'>284</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_284'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>newString<br/><b>Killed by : </b>org.apache.commons.codec.binary.StringUtilsTest.testNewStringBadEnc(org.apache.commons.codec.binary.StringUtilsTest)</span></span> removed call to java/lang/String::&#60;init&#62; &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>newString<br/><b>Killed by : </b>org.apache.commons.codec.binary.StringUtilsTest.testNewStringIso8859_1(org.apache.commons.codec.binary.StringUtilsTest)</span></span> replaced return value with &#34;&#34; for org/apache/commons/codec/binary/StringUtils::newString &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@264f5016_303'>303</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_303'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>newStringIso8859_1<br/><b>Killed by : </b>org.apache.commons.codec.binary.StringUtilsTest.testNewStringIso8859_1(org.apache.commons.codec.binary.StringUtilsTest)</span></span> removed call to java/lang/String::&#60;init&#62; &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>newStringIso8859_1<br/><b>Killed by : </b>org.apache.commons.codec.binary.StringUtilsTest.testNewStringIso8859_1(org.apache.commons.codec.binary.StringUtilsTest)</span></span> replaced return value with &#34;&#34; for org/apache/commons/codec/binary/StringUtils::newStringIso8859_1 &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@264f5016_319'>319</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_319'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>newStringUsAscii<br/><b>Killed by : </b>org.apache.commons.codec.binary.StringUtilsTest.testNewStringUsAscii(org.apache.commons.codec.binary.StringUtilsTest)</span></span> removed call to java/lang/String::&#60;init&#62; &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>newStringUsAscii<br/><b>Killed by : </b>org.apache.commons.codec.binary.StringUtilsTest.testNewStringUsAscii(org.apache.commons.codec.binary.StringUtilsTest)</span></span> replaced return value with &#34;&#34; for org/apache/commons/codec/binary/StringUtils::newStringUsAscii &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@264f5016_335'>335</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_335'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>newStringUtf16<br/><b>Killed by : </b>org.apache.commons.codec.binary.StringUtilsTest.testNewStringUtf16(org.apache.commons.codec.binary.StringUtilsTest)</span></span> removed call to java/lang/String::&#60;init&#62; &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>newStringUtf16<br/><b>Killed by : </b>org.apache.commons.codec.binary.StringUtilsTest.testNewStringUtf16(org.apache.commons.codec.binary.StringUtilsTest)</span></span> replaced return value with &#34;&#34; for org/apache/commons/codec/binary/StringUtils::newStringUtf16 &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@264f5016_351'>351</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_351'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>newStringUtf16Be<br/><b>Killed by : </b>org.apache.commons.codec.binary.StringUtilsTest.testNewStringUtf16Be(org.apache.commons.codec.binary.StringUtilsTest)</span></span> removed call to java/lang/String::&#60;init&#62; &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>newStringUtf16Be<br/><b>Killed by : </b>org.apache.commons.codec.binary.StringUtilsTest.testNewStringUtf16Be(org.apache.commons.codec.binary.StringUtilsTest)</span></span> replaced return value with &#34;&#34; for org/apache/commons/codec/binary/StringUtils::newStringUtf16Be &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@264f5016_367'>367</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_367'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>newStringUtf16Le<br/><b>Killed by : </b>org.apache.commons.codec.binary.StringUtilsTest.testNewStringUtf16Le(org.apache.commons.codec.binary.StringUtilsTest)</span></span> removed call to java/lang/String::&#60;init&#62; &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>newStringUtf16Le<br/><b>Killed by : </b>org.apache.commons.codec.binary.StringUtilsTest.testNewStringUtf16Le(org.apache.commons.codec.binary.StringUtilsTest)</span></span> replaced return value with &#34;&#34; for org/apache/commons/codec/binary/StringUtils::newStringUtf16Le &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@264f5016_383'>383</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@264f5016_383'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>newStringUtf8<br/><b>Killed by : </b>org.apache.commons.codec.binary.StringUtilsTest.testNewStringUtf8(org.apache.commons.codec.binary.StringUtilsTest)</span></span> replaced return value with &#34;&#34; for org/apache/commons/codec/binary/StringUtils::newStringUtf8 &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>PRIMITIVE_RETURN_VALS_MUTATOR</li>
+<li class='mutator'>EXPERIMENTAL_SWITCH_MUTATOR</li>
+<li class='mutator'>CONSTRUCTOR_CALL_MUTATOR</li>
+<li class='mutator'>BOOLEAN_TRUE_RETURN</li>
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+<li class='mutator'>REMOVE_CONDITIONALS_ORDER_IF_MUTATOR</li>
+<li class='mutator'>REMOVE_CONDITIONALS_EQUAL_ELSE_MUTATOR</li>
+<li class='mutator'>EMPTY_RETURN_VALUES</li>
+<li class='mutator'>EXPERIMENTAL_MEMBER_VARIABLE_MUTATOR</li>
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+<li class='mutator'>MATH_MUTATOR</li>
+<li class='mutator'>BOOLEAN_FALSE_RETURN</li>
+<li class='mutator'>INLINE_CONSTANT_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>org.apache.commons.codec.binary.Base64InputStreamTest.testCodec98NPE(org.apache.commons.codec.binary.Base64InputStreamTest) (1 ms)</li><li>org.apache.commons.codec.binary.HexTest.testHelloWorldLowerCaseHex(org.apache.commons.codec.binary.HexTest) (0 ms)</li><li>org.apache.commons.codec.language.DoubleMetaphoneTest.testNTilde(org.apache.commons.codec.language.DoubleMetaphoneTest) (0 ms)</li><li>org.apache.commons.codec.language.DoubleMetaphoneTest.testCodec184(org.apache.commons.codec.language.DoubleMetaphoneTest) (0 ms)</li><li>org.apache.commons.codec.digest.HmacUtilsTest.testHmacSha1Hex(org.apache.commons.codec.digest.HmacUtilsTest) (0 ms)</li><li>org.apache.commons.codec.net.QuotedPrintableCodecTest.testSafeCharEncodeDecode(org.apache.commons.codec.net.QuotedPrintableCodecTest) (0 ms)</li><li>org.apache.commons.codec.digest.HmacUtilsTest.testSha384HMac(org.apache.commons.codec.digest.HmacUtilsTest) (0 ms)</li><li>org.apache.commons.codec.binary.Base32InputStreamTest.testRead0(org.apache.commons.codec.binary.Base32InputStreamTest) (0 ms)</li><li>org.apache.commons.codec.binary.Base64InputStreamTest.testInputStreamReader(org.apache.commons.codec.binary.Base64InputStreamTest) (0 ms)</li><li>org.apache.commons.codec.binary.Base64InputStreamTest.testRead0(org.apache.commons.codec.binary.Base64InputStreamTest) (0 ms)</li><li>org.apache.commons.codec.binary.Base64Test.testRfc4648Section10EncodeDecode(org.apache.commons.codec.binary.Base64Test) (1 ms)</li><li>org.apache.commons.codec.binary.Base32InputStreamTest.testBase32InputStreamByChunk(org.apache.commons.codec.binary.Base32InputStreamTest) (83 ms)</li><li>org.apache.commons.codec.binary.Base64InputStreamTest.testAvailable(org.apache.commons.codec.binary.Base64InputStreamTest) (0 ms)</li><li>org.apache.commons.codec.net.QuotedPrintableCodecTest.testUltimateSoftBreak(org.apache.commons.codec.net.QuotedPrintableCodecTest) (0 ms)</li><li>org.apache.commons.codec.binary.Base64Test.testConstructors(org.apache.commons.codec.binary.Base64Test) (1 ms)</li><li>org.apache.commons.codec.binary.Base64Test.testRfc4648Section10Encode(org.apache.commons.codec.binary.Base64Test) (1 ms)</li><li>org.apache.commons.codec.digest.DigestUtilsTest.testSha1Hex(org.apache.commons.codec.digest.DigestUtilsTest) (26 ms)</li><li>org.apache.commons.codec.binary.Base32InputStreamTest.testSkipBig(org.apache.commons.codec.binary.Base32InputStreamTest) (0 ms)</li><li>org.apache.commons.codec.binary.Base32OutputStreamTest.testBase32OutputStreamByteByByte(org.apache.commons.codec.binary.Base32OutputStreamTest) (106 ms)</li><li>org.apache.commons.codec.binary.StringUtilsTest.testGetBytesUncheckedNullInput(org.apache.commons.codec.binary.StringUtilsTest) (0 ms)</li><li>org.apache.commons.codec.binary.Base64Test.testChunkedEncodeMultipleOf76(org.apache.commons.codec.binary.Base64Test) (1 ms)</li><li>org.apache.commons.codec.binary.Base32Test.testBase32SamplesNonDefaultPadding(org.apache.commons.codec.binary.Base32Test) (0 ms)</li><li>org.apache.commons.codec.net.URLCodecTest.testEncodeUrlWithNullBitSet(org.apache.commons.codec.net.URLCodecTest) (0 ms)</li><li>org.apache.commons.codec.net.URLCodecTest.testSafeCharEncodeDecode(org.apache.commons.codec.net.URLCodecTest) (0 ms)</li><li>org.apache.commons.codec.binary.Base32InputStreamTest.testReadOutOfBounds(org.apache.commons.codec.binary.Base32InputStreamTest) (0 ms)</li><li>org.apache.commons.codec.binary.Base64OutputStreamTest.testCodec98NPE(org.apache.commons.codec.binary.Base64OutputStreamTest) (1 ms)</li><li>org.apache.commons.codec.binary.Base32InputStreamTest.testMarkSupported(org.apache.commons.codec.binary.Base32InputStreamTest) (0 ms)</li><li>org.apache.commons.codec.binary.Base32InputStreamTest.testSkipPastEnd(org.apache.commons.codec.binary.Base32InputStreamTest) (0 ms)</li><li>org.apache.commons.codec.binary.HexTest.testEncodeDecodeRandom(org.apache.commons.codec.binary.HexTest) (13 ms)</li><li>org.apache.commons.codec.digest.HmacUtilsTest.testInternalNoSuchAlgorithmException(org.apache.commons.codec.digest.HmacUtilsTest) (0 ms)</li><li>org.apache.commons.codec.binary.StringUtilsTest.testGetBytesUncheckedBadName(org.apache.commons.codec.binary.StringUtilsTest) (0 ms)</li><li>org.apache.commons.codec.binary.StringUtilsTest.testGetBytesIso8859_1(org.apache.commons.codec.binary.StringUtilsTest) (1 ms)</li><li>org.apache.commons.codec.language.DoubleMetaphoneTest.testIsDoubleMetaphoneNotEqual(org.apache.commons.codec.language.DoubleMetaphoneTest) (0 ms)</li><li>org.apache.commons.codec.digest.HmacUtilsTest.testSha512HMac(org.apache.commons.codec.digest.HmacUtilsTest) (0 ms)</li><li>org.apache.commons.codec.binary.StringUtilsTest.testNewStringNullInput(org.apache.commons.codec.binary.StringUtilsTest) (1 ms)</li><li>org.apache.commons.codec.binary.Base64Test.testDecodeWithInnerPad(org.apache.commons.codec.binary.Base64Test) (2 ms)</li><li>org.apache.commons.codec.binary.Base64Test.testByteToStringVariations(org.apache.commons.codec.binary.Base64Test) (1 ms)</li><li>org.apache.commons.codec.digest.DigestUtilsTest.testSha256(org.apache.commons.codec.digest.DigestUtilsTest) (37 ms)</li><li>org.apache.commons.codec.net.QuotedPrintableCodecTest.testFinalBytes(org.apache.commons.codec.net.QuotedPrintableCodecTest) (0 ms)</li><li>org.apache.commons.codec.binary.StringUtilsTest.testNewStringIso8859_1(org.apache.commons.codec.binary.StringUtilsTest) (0 ms)</li><li>org.apache.commons.codec.net.QuotedPrintableCodecTest.testTrailingSpecial(org.apache.commons.codec.net.QuotedPrintableCodecTest) (1 ms)</li><li>org.apache.commons.codec.language.DoubleMetaphoneTest.testIsDoubleMetaphoneEqualWithMATCHES(org.apache.commons.codec.language.DoubleMetaphoneTest) (6 ms)</li><li>org.apache.commons.codec.binary.BaseNCodecTest.testIsInAlphabetString(org.apache.commons.codec.binary.BaseNCodecTest) (0 ms)</li><li>org.apache.commons.codec.net.URLCodecTest.testDefaultEncoding(org.apache.commons.codec.net.URLCodecTest) (1 ms)</li><li>org.apache.commons.codec.net.QuotedPrintableCodecTest.testSoftLineBreakEncode(org.apache.commons.codec.net.QuotedPrintableCodecTest) (0 ms)</li><li>org.apache.commons.codec.binary.Base32InputStreamTest.testSkipNone(org.apache.commons.codec.binary.Base32InputStreamTest) (1 ms)</li><li>org.apache.commons.codec.digest.HmacUtilsTest.testSha1HMac(org.apache.commons.codec.digest.HmacUtilsTest) (3 ms)</li><li>org.apache.commons.codec.binary.StringUtilsTest.testNewStringUtf16Le(org.apache.commons.codec.binary.StringUtilsTest) (1 ms)</li><li>org.apache.commons.codec.net.QuotedPrintableCodecTest.testDecodeInvalid(org.apache.commons.codec.net.QuotedPrintableCodecTest) (0 ms)</li><li>org.apache.commons.codec.net.QuotedPrintableCodecTest.testSkipNotEncodedCRLF(org.apache.commons.codec.net.QuotedPrintableCodecTest) (0 ms)</li><li>org.apache.commons.codec.net.BCodecTest.testEncodeObjects(org.apache.commons.codec.net.BCodecTest) (0 ms)</li><li>org.apache.commons.codec.binary.Base64InputStreamTest.testBase64InputStreamByChunk(org.apache.commons.codec.binary.Base64InputStreamTest) (47 ms)</li><li>org.apache.commons.codec.digest.DigestUtilsTest.testMd2Length(org.apache.commons.codec.digest.DigestUtilsTest) (1 ms)</li><li>org.apache.commons.codec.binary.StringUtilsTest.testNewStringUtf16Be(org.apache.commons.codec.binary.StringUtilsTest) (1 ms)</li><li>org.apache.commons.codec.digest.DigestUtilsTest.testSha512(org.apache.commons.codec.digest.DigestUtilsTest) (9 ms)</li><li>org.apache.commons.codec.binary.Base64Test.testUUID(org.apache.commons.codec.binary.Base64Test) (1 ms)</li><li>org.apache.commons.codec.net.BCodecTest.testUTF8RoundTrip(org.apache.commons.codec.net.BCodecTest) (0 ms)</li><li>org.apache.commons.codec.binary.Base64OutputStreamTest.testBase64OutputStreamByChunk(org.apache.commons.codec.binary.Base64OutputStreamTest) (33 ms)</li><li>org.apache.commons.codec.binary.StringUtilsTest.testNewStringUtf16(org.apache.commons.codec.binary.StringUtilsTest) (0 ms)</li><li>org.apache.commons.codec.language.DoubleMetaphoneTest.testIsDoubleMetaphoneEqualBasic(org.apache.commons.codec.language.DoubleMetaphoneTest) (0 ms)</li><li>org.apache.commons.codec.digest.DigestUtilsTest.testMd5HexLength(org.apache.commons.codec.digest.DigestUtilsTest) (1 ms)</li><li>org.apache.commons.codec.binary.Base64Test.testConstructor_Int_ByteArray_Boolean_UrlSafe(org.apache.commons.codec.binary.Base64Test) (2 ms)</li><li>org.apache.commons.codec.binary.Base64InputStreamTest.testReadNull(org.apache.commons.codec.binary.Base64InputStreamTest) (0 ms)</li><li>org.apache.commons.codec.binary.Base64InputStreamTest.testCodec130(org.apache.commons.codec.binary.Base64InputStreamTest) (0 ms)</li><li>org.apache.commons.codec.net.BCodecTest.testBasicEncodeDecode(org.apache.commons.codec.net.BCodecTest) (0 ms)</li><li>org.apache.commons.codec.digest.DigestUtilsTest.testSha1UpdateWithString(org.apache.commons.codec.digest.DigestUtilsTest) (1 ms)</li><li>org.apache.commons.codec.binary.Base32InputStreamTest.testSkipToEnd(org.apache.commons.codec.binary.Base32InputStreamTest) (0 ms)</li><li>org.apache.commons.codec.binary.Base64InputStreamTest.testSkipPastEnd(org.apache.commons.codec.binary.Base64InputStreamTest) (0 ms)</li><li>org.apache.commons.codec.binary.Base64InputStreamTest.testSkipWrongArgument(org.apache.commons.codec.binary.Base64InputStreamTest) (0 ms)</li><li>org.apache.commons.codec.binary.HexTest.testHelloWorldUpperCaseHex(org.apache.commons.codec.binary.HexTest) (0 ms)</li><li>org.apache.commons.codec.binary.Base32InputStreamTest.testSkipWrongArgument(org.apache.commons.codec.binary.Base32InputStreamTest) (0 ms)</li><li>org.apache.commons.codec.binary.StringUtilsTest.testNewStringUsAscii(org.apache.commons.codec.binary.StringUtilsTest) (0 ms)</li><li>org.apache.commons.codec.binary.Base64InputStreamTest.testReadOutOfBounds(org.apache.commons.codec.binary.Base64InputStreamTest) (1 ms)</li><li>org.apache.commons.codec.binary.Base64Test.testRfc4648Section10Decode(org.apache.commons.codec.binary.Base64Test) (1 ms)</li><li>org.apache.commons.codec.digest.DigestUtilsTest.testSha384(org.apache.commons.codec.digest.DigestUtilsTest) (22 ms)</li><li>org.apache.commons.codec.net.URLCodecTest.testEncodeObjects(org.apache.commons.codec.net.URLCodecTest) (0 ms)</li><li>org.apache.commons.codec.binary.StringUtilsTest.testGetBytesUtf16Be(org.apache.commons.codec.binary.StringUtilsTest) (0 ms)</li><li>org.apache.commons.codec.digest.DigestUtilsTest.testMd5Hex(org.apache.commons.codec.digest.DigestUtilsTest) (8 ms)</li><li>org.apache.commons.codec.net.QuotedPrintableCodecTest.testUTF8RoundTrip(org.apache.commons.codec.net.QuotedPrintableCodecTest) (0 ms)</li><li>org.apache.commons.codec.binary.Base64InputStreamTest.testSkipNone(org.apache.commons.codec.binary.Base64InputStreamTest) (1 ms)</li><li>org.apache.commons.codec.binary.StringUtilsTest.testGetBytesUtf16Le(org.apache.commons.codec.binary.StringUtilsTest) (0 ms)</li><li>org.apache.commons.codec.digest.HmacUtilsTest.testSha256HMac(org.apache.commons.codec.digest.HmacUtilsTest) (0 ms)</li><li>org.apache.commons.codec.net.QCodecTest.testEncodeObjects(org.apache.commons.codec.net.QCodecTest) (0 ms)</li><li>org.apache.commons.codec.binary.Base64InputStreamTest.testMarkSupported(org.apache.commons.codec.binary.Base64InputStreamTest) (1 ms)</li><li>org.apache.commons.codec.binary.Base64Test.testBase64(org.apache.commons.codec.binary.Base64Test) (1 ms)</li><li>org.apache.commons.codec.binary.Base32InputStreamTest.testBase32InputStreamByteByByte(org.apache.commons.codec.binary.Base32InputStreamTest) (65 ms)</li><li>org.apache.commons.codec.digest.HmacUtilsTest.testInitializedMac(org.apache.commons.codec.digest.HmacUtilsTest) (1 ms)</li><li>org.apache.commons.codec.binary.Base32InputStreamTest.testReadNull(org.apache.commons.codec.binary.Base32InputStreamTest) (0 ms)</li><li>org.apache.commons.codec.binary.Base64InputStreamTest.testBase64InputStreamByteByByte(org.apache.commons.codec.binary.Base64InputStreamTest) (83 ms)</li><li>org.apache.commons.codec.language.DoubleMetaphoneTest.testCCedilla(org.apache.commons.codec.language.DoubleMetaphoneTest) (1 ms)</li><li>org.apache.commons.codec.net.QCodecTest.testDecodeObjects(org.apache.commons.codec.net.QCodecTest) (1 ms)</li><li>org.apache.commons.codec.digest.HmacUtilsTest.testHmacMd5Hex(org.apache.commons.codec.digest.HmacUtilsTest) (1 ms)</li><li>org.apache.commons.codec.digest.DigestUtilsTest.testMd2Hex(org.apache.commons.codec.digest.DigestUtilsTest) (231 ms)</li><li>org.apache.commons.codec.binary.Base32InputStreamTest.testAvailable(org.apache.commons.codec.binary.Base32InputStreamTest) (2 ms)</li><li>org.apache.commons.codec.net.QCodecTest.testUTF8RoundTrip(org.apache.commons.codec.net.QCodecTest) (1 ms)</li><li>org.apache.commons.codec.binary.StringUtilsTest.testGetBytesUsAscii(org.apache.commons.codec.binary.StringUtilsTest) (1 ms)</li><li>org.apache.commons.codec.net.URLCodecTest.testDecodeInvalid(org.apache.commons.codec.net.URLCodecTest) (1 ms)</li><li>org.apache.commons.codec.binary.StringUtilsTest.testGetBytesUtf8(org.apache.commons.codec.binary.StringUtilsTest) (0 ms)</li><li>org.apache.commons.codec.binary.Base32OutputStreamTest.testBase32OutputStreamByChunk(org.apache.commons.codec.binary.Base32OutputStreamTest) (33 ms)</li><li>org.apache.commons.codec.binary.Base32Test.testBase32HexSamples(org.apache.commons.codec.binary.Base32Test) (1 ms)</li><li>org.apache.commons.codec.net.QuotedPrintableCodecTest.testEncodeUrlWithNullBitSet(org.apache.commons.codec.net.QuotedPrintableCodecTest) (0 ms)</li><li>org.apache.commons.codec.net.QCodecTest.testUnsafeEncodeDecode(org.apache.commons.codec.net.QCodecTest) (0 ms)</li><li>org.apache.commons.codec.binary.Base32InputStreamTest.testCodec130(org.apache.commons.codec.binary.Base32InputStreamTest) (0 ms)</li><li>org.apache.commons.codec.net.QCodecTest.testEncodeDecodeBlanks(org.apache.commons.codec.net.QCodecTest) (0 ms)</li><li>org.apache.commons.codec.net.QuotedPrintableCodecTest.testDecodeObjects(org.apache.commons.codec.net.QuotedPrintableCodecTest) (1 ms)</li><li>org.apache.commons.codec.binary.Base64InputStreamTest.testSkipBig(org.apache.commons.codec.binary.Base64InputStreamTest) (0 ms)</li><li>org.apache.commons.codec.binary.Base64OutputStreamTest.testBase64OutputStreamByteByByte(org.apache.commons.codec.binary.Base64OutputStreamTest) (141 ms)</li><li>org.apache.commons.codec.binary.Base64Test.testRfc4648Section10DecodeWithCrLf(org.apache.commons.codec.binary.Base64Test) (0 ms)</li><li>org.apache.commons.codec.net.URLCodecTest.testInvalidEncoding(org.apache.commons.codec.net.URLCodecTest) (0 ms)</li><li>org.apache.commons.codec.net.QCodecTest.testBasicEncodeDecode(org.apache.commons.codec.net.QCodecTest) (0 ms)</li><li>org.apache.commons.codec.binary.Base32Test.testBase32Samples(org.apache.commons.codec.binary.Base32Test) (0 ms)</li><li>org.apache.commons.codec.net.QuotedPrintableCodecTest.testEncodeObjects(org.apache.commons.codec.net.QuotedPrintableCodecTest) (1 ms)</li><li>org.apache.commons.codec.digest.DigestUtilsTest.testMd2HexLength(org.apache.commons.codec.digest.DigestUtilsTest) (1 ms)</li><li>org.apache.commons.codec.binary.Base64InputStreamTest.testSkipToEnd(org.apache.commons.codec.binary.Base64InputStreamTest) (1 ms)</li><li>org.apache.commons.codec.binary.Base32Test.testBase32Chunked(org.apache.commons.codec.binary.Base32Test) (0 ms)</li><li>org.apache.commons.codec.digest.DigestUtilsTest.testMd5Length(org.apache.commons.codec.digest.DigestUtilsTest) (0 ms)</li><li>org.apache.commons.codec.language.DoubleMetaphoneTest.testIsDoubleMetaphoneEqualExtended2(org.apache.commons.codec.language.DoubleMetaphoneTest) (0 ms)</li><li>org.apache.commons.codec.binary.StringUtilsTest.testNewStringUtf8(org.apache.commons.codec.binary.StringUtilsTest) (0 ms)</li><li>org.apache.commons.codec.digest.DigestUtilsTest.testShaUpdateWithString(org.apache.commons.codec.digest.DigestUtilsTest) (1 ms)</li><li>org.apache.commons.codec.binary.Base64InputStreamTest.testCodec101(org.apache.commons.codec.binary.Base64InputStreamTest) (0 ms)</li><li>org.apache.commons.codec.net.URLCodecTest.testUTF8RoundTrip(org.apache.commons.codec.net.URLCodecTest) (1 ms)</li><li>org.apache.commons.codec.binary.StringUtilsTest.testNewStringBadEnc(org.apache.commons.codec.binary.StringUtilsTest) (0 ms)</li><li>org.apache.commons.codec.net.URLCodecTest.testUnsafeEncodeDecode(org.apache.commons.codec.net.URLCodecTest) (0 ms)</li><li>org.apache.commons.codec.net.QuotedPrintableCodecTest.testUnsafeEncodeDecode(org.apache.commons.codec.net.QuotedPrintableCodecTest) (0 ms)</li><li>org.apache.commons.codec.digest.DigestUtilsTest.testShaHex(org.apache.commons.codec.digest.DigestUtilsTest) (10 ms)</li><li>org.apache.commons.codec.binary.Base64Test.testRfc4648Section10DecodeEncode(org.apache.commons.codec.binary.Base64Test) (0 ms)</li><li>org.apache.commons.codec.binary.StringUtilsTest.testGetBytesUtf16(org.apache.commons.codec.binary.StringUtilsTest) (0 ms)</li><li>org.apache.commons.codec.net.URLCodecTest.testDecodeObjects(org.apache.commons.codec.net.URLCodecTest) (0 ms)</li><li>org.apache.commons.codec.binary.Base64Test.testStringToByteVariations(org.apache.commons.codec.binary.Base64Test) (1 ms)</li><li>org.apache.commons.codec.digest.HmacUtilsTest.testMd5HMac(org.apache.commons.codec.digest.HmacUtilsTest) (0 ms)</li><li>org.apache.commons.codec.net.QuotedPrintableCodecTest.testBasicEncodeDecode(org.apache.commons.codec.net.QuotedPrintableCodecTest) (1 ms)</li><li>org.apache.commons.codec.net.BCodecTest.testDecodeObjects(org.apache.commons.codec.net.BCodecTest) (0 ms)</li><li>org.apache.commons.codec.language.DoubleMetaphoneTest.testIsDoubleMetaphoneEqualExtended3(org.apache.commons.codec.language.DoubleMetaphoneTest) (8 ms)</li><li>org.apache.commons.codec.binary.Base64Test.testIsStringBase64(org.apache.commons.codec.binary.Base64Test) (1 ms)</li><li>org.apache.commons.codec.net.QuotedPrintableCodecTest.testSoftLineBreakDecode(org.apache.commons.codec.net.QuotedPrintableCodecTest) (1 ms)</li><li>org.apache.commons.codec.binary.Base64Test.testConstructor_Int_ByteArray_Boolean(org.apache.commons.codec.binary.Base64Test) (5 ms)</li><li>org.apache.commons.codec.digest.HmacUtilsTest.testHmacSha1UpdateWithString(org.apache.commons.codec.digest.HmacUtilsTest) (0 ms)</li><li>org.apache.commons.codec.net.URLCodecTest.testBasicEncodeDecode(org.apache.commons.codec.net.URLCodecTest) (0 ms)</li><li>org.apache.commons.codec.net.QuotedPrintableCodecTest.testDefaultEncoding(org.apache.commons.codec.net.QuotedPrintableCodecTest) (0 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.3.2
+
+</body>
+</html>

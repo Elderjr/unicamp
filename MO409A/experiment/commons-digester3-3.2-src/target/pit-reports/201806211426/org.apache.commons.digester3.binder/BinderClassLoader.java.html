@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>BinderClassLoader.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_1'/>
+1
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_1'>1</a>
+<span>
+1. <init> : Removed assignment to member variable val$adaptedClassLoader &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>package org.apache.commons.digester3.binder;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_2'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_3'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/*</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_4'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Licensed to the Apache Software Foundation (ASF) under one</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_5'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * or more contributor license agreements.  See the NOTICE file</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_6'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * distributed with this work for additional information</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_7'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * regarding copyright ownership.  The ASF licenses this file</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_8'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * to you under the Apache License, Version 2.0 (the</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_9'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * &#34;License&#34;); you may not use this file except in compliance</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_10'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * with the License.  You may obtain a copy of the License at</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_11'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_12'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *   http://www.apache.org/licenses/LICENSE-2.0</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_13'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_14'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Unless required by applicable law or agreed to in writing,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_15'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * software distributed under the License is distributed on an</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_16'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * &#34;AS IS&#34; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_17'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * KIND, either express or implied.  See the License for the</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_18'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * specific language governing permissions and limitations</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_19'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * under the License.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_20'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_21'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_22'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import static java.lang.System.getSecurityManager;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_23'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import static java.security.AccessController.doPrivileged;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_24'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_25'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.security.PrivilegedAction;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_26'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.Collections;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_27'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.HashMap;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_28'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.Map;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_29'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_30'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>final class BinderClassLoader</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_31'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    extends ClassLoader</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_32'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>{</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_33'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_34'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private static final Map&#60;String, Class&#60;?&#62;&#62; PRIMITIVE_TYPES;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_35'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    static</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_36'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_37'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        HashMap&#60;String, Class&#60;?&#62;&#62; primitiveTypes = new HashMap&#60;String, Class&#60;?&#62;&#62;();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_38'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        primitiveTypes.put( &#34;boolean&#34;, boolean.class );</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_39'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        primitiveTypes.put( &#34;byte&#34;, byte.class );</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_40'/>
+40
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_40'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        primitiveTypes.put( &#34;short&#34;, short.class );</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_41'/>
+41
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_41'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        primitiveTypes.put( &#34;int&#34;, int.class );</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_42'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        primitiveTypes.put( &#34;char&#34;, char.class );</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_43'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        primitiveTypes.put( &#34;long&#34;, long.class );</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_44'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        primitiveTypes.put( &#34;float&#34;, float.class );</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_45'/>
+45
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_45'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        primitiveTypes.put( &#34;double&#34;, double.class );</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_46'/>
+46
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_46'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        PRIMITIVE_TYPES = Collections.unmodifiableMap( primitiveTypes );</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_47'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_48'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_49'/>
+49
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_49'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static BinderClassLoader createBinderClassLoader( final ClassLoader adaptedClassLoader )</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_50'/>
+50
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_50'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_51'/>
+51
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_51'>1</a>
+<span>
+1. createBinderClassLoader : removed call to org/apache/commons/digester3/binder/BinderClassLoader$1::&#60;init&#62; &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        PrivilegedAction&#60;BinderClassLoader&#62; action = new PrivilegedAction&#60;BinderClassLoader&#62;()</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_52'/>
+52
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_52'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_53'/>
+53
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_53'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_54'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            public BinderClassLoader run()</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_55'/>
+55
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_55'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_56'/>
+56
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_56'>3</a>
+<span>
+1. run : removed call to org/apache/commons/digester3/binder/BinderClassLoader::&#60;init&#62; &rarr; KILLED<br/>
+2. run : replaced return value with null for org/apache/commons/digester3/binder/BinderClassLoader$1::run &rarr; KILLED<br/>
+3. run : mutated return of Object value for org/apache/commons/digester3/binder/BinderClassLoader$1::run to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                return new BinderClassLoader( adaptedClassLoader );</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_57'/>
+57
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_57'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_58'/>
+58
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_58'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_59'/>
+59
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_59'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        };</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_60'/>
+60
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_60'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_61'/>
+61
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_61'>4</a>
+<span>
+1. createBinderClassLoader : negated conditional &rarr; SURVIVED<br/>
+2. createBinderClassLoader : removed call to java/lang/System::getSecurityManager &rarr; SURVIVED<br/>
+3. createBinderClassLoader : removed conditional - replaced equality check with false &rarr; SURVIVED<br/>
+4. createBinderClassLoader : removed conditional - replaced equality check with true &rarr; SURVIVED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        if ( getSecurityManager() != null )</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_62'/>
+62
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_62'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_63'/>
+63
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_63'>3</a>
+<span>
+1. createBinderClassLoader : removed call to java/security/AccessController::doPrivileged &rarr; NO_COVERAGE<br/>
+2. createBinderClassLoader : replaced return value with null for org/apache/commons/digester3/binder/BinderClassLoader::createBinderClassLoader &rarr; NO_COVERAGE<br/>
+3. createBinderClassLoader : mutated return of Object value for org/apache/commons/digester3/binder/BinderClassLoader::createBinderClassLoader to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>            return doPrivileged( action );</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_64'/>
+64
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_64'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_65'/>
+65
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_65'>3</a>
+<span>
+1. createBinderClassLoader : removed call to java/security/PrivilegedAction::run &rarr; KILLED<br/>
+2. createBinderClassLoader : replaced return value with null for org/apache/commons/digester3/binder/BinderClassLoader::createBinderClassLoader &rarr; KILLED<br/>
+3. createBinderClassLoader : mutated return of Object value for org/apache/commons/digester3/binder/BinderClassLoader::createBinderClassLoader to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return action.run();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_66'/>
+66
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_66'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_67'/>
+67
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_67'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_68'/>
+68
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_68'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final ClassLoader adaptedClassLoader;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_69'/>
+69
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_69'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_70'/>
+70
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_70'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    private BinderClassLoader( ClassLoader adaptedClassLoader )</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_71'/>
+71
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_71'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_72'/>
+72
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_72'>1</a>
+<span>
+1. <init> : Removed assignment to member variable adaptedClassLoader &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        this.adaptedClassLoader = adaptedClassLoader;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_73'/>
+73
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_73'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_74'/>
+74
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_74'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_75'/>
+75
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_75'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public ClassLoader getAdaptedClassLoader()</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_76'/>
+76
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_76'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_77'/>
+77
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_77'>2</a>
+<span>
+1. getAdaptedClassLoader : replaced return value with null for org/apache/commons/digester3/binder/BinderClassLoader::getAdaptedClassLoader &rarr; SURVIVED<br/>
+2. getAdaptedClassLoader : mutated return of Object value for org/apache/commons/digester3/binder/BinderClassLoader::getAdaptedClassLoader to ( if (x != null) null else throw new RuntimeException ) &rarr; SURVIVED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return adaptedClassLoader;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_78'/>
+78
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_78'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_79'/>
+79
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_79'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_80'/>
+80
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_80'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_81'/>
+81
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_81'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * {@inheritDoc}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_82'/>
+82
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_82'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_83'/>
+83
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_83'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_84'/>
+84
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_84'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    protected synchronized Class&#60;?&#62; loadClass( String name, boolean resolve )</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_85'/>
+85
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_85'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        throws ClassNotFoundException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_86'/>
+86
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_86'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_87'/>
+87
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_87'>4</a>
+<span>
+1. loadClass : negated conditional &rarr; KILLED<br/>
+2. loadClass : removed call to java/util/Map::containsKey &rarr; KILLED<br/>
+3. loadClass : removed conditional - replaced equality check with false &rarr; KILLED<br/>
+4. loadClass : removed conditional - replaced equality check with true &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if ( PRIMITIVE_TYPES.containsKey( name ) )</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_88'/>
+88
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_88'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_89'/>
+89
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_89'>3</a>
+<span>
+1. loadClass : removed call to java/util/Map::get &rarr; KILLED<br/>
+2. loadClass : replaced return value with null for org/apache/commons/digester3/binder/BinderClassLoader::loadClass &rarr; KILLED<br/>
+3. loadClass : mutated return of Object value for org/apache/commons/digester3/binder/BinderClassLoader::loadClass to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return PRIMITIVE_TYPES.get( name );</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_90'/>
+90
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_90'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_91'/>
+91
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_91'>3</a>
+<span>
+1. loadClass : removed call to java/lang/ClassLoader::loadClass &rarr; KILLED<br/>
+2. loadClass : replaced return value with null for org/apache/commons/digester3/binder/BinderClassLoader::loadClass &rarr; KILLED<br/>
+3. loadClass : mutated return of Object value for org/apache/commons/digester3/binder/BinderClassLoader::loadClass to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return adaptedClassLoader.loadClass( name );</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_92'/>
+92
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_92'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_93'/>
+93
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_93'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5731697b_94'/>
+94
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_94'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5731697b_1'>1</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_1'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b><init><br/><b>Killed by : </b>org.apache.commons.digester3.SetPropertiesRuleTestCase.testNegativeNotIgnoreMissing(org.apache.commons.digester3.SetPropertiesRuleTestCase)</span></span> Removed assignment to member variable val$adaptedClassLoader &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5731697b_51'>51</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_51'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>createBinderClassLoader<br/><b>Killed by : </b>org.apache.commons.digester3.binder.BinderClassLoaderTestCase.loadBoolean(org.apache.commons.digester3.binder.BinderClassLoaderTestCase)</span></span> removed call to org/apache/commons/digester3/binder/BinderClassLoader$1::&#60;init&#62; &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5731697b_56'>56</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_56'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>run<br/><b>Killed by : </b>org.apache.commons.digester3.binder.BinderClassLoaderTestCase.loadBoolean(org.apache.commons.digester3.binder.BinderClassLoaderTestCase)</span></span> removed call to org/apache/commons/digester3/binder/BinderClassLoader::&#60;init&#62; &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>run<br/><b>Killed by : </b>org.apache.commons.digester3.binder.BinderClassLoaderTestCase.loadBoolean(org.apache.commons.digester3.binder.BinderClassLoaderTestCase)</span></span> replaced return value with null for org/apache/commons/digester3/binder/BinderClassLoader$1::run &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>run<br/><b>Killed by : </b>org.apache.commons.digester3.binder.BinderClassLoaderTestCase.loadBoolean(org.apache.commons.digester3.binder.BinderClassLoaderTestCase)</span></span> mutated return of Object value for org/apache/commons/digester3/binder/BinderClassLoader$1::run to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5731697b_61'>61</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_61'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>createBinderClassLoader<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>createBinderClassLoader<br/><b>Killed by : </b>none</span></span> removed call to java/lang/System::getSecurityManager &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>createBinderClassLoader<br/><b>Killed by : </b>none</span></span> removed conditional - replaced equality check with false &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>createBinderClassLoader<br/><b>Killed by : </b>none</span></span> removed conditional - replaced equality check with true &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5731697b_63'>63</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_63'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>createBinderClassLoader<br/><b>Killed by : </b>none</span></span> removed call to java/security/AccessController::doPrivileged &rarr; NO_COVERAGE</p> <p class='NO_COVERAGE'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>createBinderClassLoader<br/><b>Killed by : </b>none</span></span> replaced return value with null for org/apache/commons/digester3/binder/BinderClassLoader::createBinderClassLoader &rarr; NO_COVERAGE</p> <p class='NO_COVERAGE'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>createBinderClassLoader<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/digester3/binder/BinderClassLoader::createBinderClassLoader to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5731697b_65'>65</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_65'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>createBinderClassLoader<br/><b>Killed by : </b>org.apache.commons.digester3.binder.BinderClassLoaderTestCase.loadBoolean(org.apache.commons.digester3.binder.BinderClassLoaderTestCase)</span></span> removed call to java/security/PrivilegedAction::run &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>createBinderClassLoader<br/><b>Killed by : </b>org.apache.commons.digester3.binder.BinderClassLoaderTestCase.loadBoolean(org.apache.commons.digester3.binder.BinderClassLoaderTestCase)</span></span> replaced return value with null for org/apache/commons/digester3/binder/BinderClassLoader::createBinderClassLoader &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>createBinderClassLoader<br/><b>Killed by : </b>org.apache.commons.digester3.binder.BinderClassLoaderTestCase.loadBoolean(org.apache.commons.digester3.binder.BinderClassLoaderTestCase)</span></span> mutated return of Object value for org/apache/commons/digester3/binder/BinderClassLoader::createBinderClassLoader to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5731697b_72'>72</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_72'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b><init><br/><b>Killed by : </b>org.apache.commons.digester3.SetPropertiesRuleTestCase.testNegativeNotIgnoreMissing(org.apache.commons.digester3.SetPropertiesRuleTestCase)</span></span> Removed assignment to member variable adaptedClassLoader &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5731697b_77'>77</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_77'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getAdaptedClassLoader<br/><b>Killed by : </b>none</span></span> replaced return value with null for org/apache/commons/digester3/binder/BinderClassLoader::getAdaptedClassLoader &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getAdaptedClassLoader<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/digester3/binder/BinderClassLoader::getAdaptedClassLoader to ( if (x != null) null else throw new RuntimeException ) &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5731697b_87'>87</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_87'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>loadClass<br/><b>Killed by : </b>org.apache.commons.digester3.binder.BinderClassLoaderTestCase.loadBoolean(org.apache.commons.digester3.binder.BinderClassLoaderTestCase)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>loadClass<br/><b>Killed by : </b>org.apache.commons.digester3.binder.BinderClassLoaderTestCase.loadBoolean(org.apache.commons.digester3.binder.BinderClassLoaderTestCase)</span></span> removed call to java/util/Map::containsKey &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>loadClass<br/><b>Killed by : </b>org.apache.commons.digester3.binder.BinderClassLoaderTestCase.loadBoolean(org.apache.commons.digester3.binder.BinderClassLoaderTestCase)</span></span> removed conditional - replaced equality check with false &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>loadClass<br/><b>Killed by : </b>org.apache.commons.digester3.SetPropertiesRuleTestCase.testNegativeNotIgnoreMissing(org.apache.commons.digester3.SetPropertiesRuleTestCase)</span></span> removed conditional - replaced equality check with true &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5731697b_89'>89</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_89'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>loadClass<br/><b>Killed by : </b>org.apache.commons.digester3.binder.BinderClassLoaderTestCase.loadBoolean(org.apache.commons.digester3.binder.BinderClassLoaderTestCase)</span></span> removed call to java/util/Map::get &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>loadClass<br/><b>Killed by : </b>org.apache.commons.digester3.binder.BinderClassLoaderTestCase.loadBoolean(org.apache.commons.digester3.binder.BinderClassLoaderTestCase)</span></span> replaced return value with null for org/apache/commons/digester3/binder/BinderClassLoader::loadClass &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>loadClass<br/><b>Killed by : </b>org.apache.commons.digester3.binder.BinderClassLoaderTestCase.loadBoolean(org.apache.commons.digester3.binder.BinderClassLoaderTestCase)</span></span> mutated return of Object value for org/apache/commons/digester3/binder/BinderClassLoader::loadClass to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5731697b_91'>91</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5731697b_91'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>loadClass<br/><b>Killed by : </b>org.apache.commons.digester3.SetPropertiesRuleTestCase.testNegativeNotIgnoreMissing(org.apache.commons.digester3.SetPropertiesRuleTestCase)</span></span> removed call to java/lang/ClassLoader::loadClass &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>loadClass<br/><b>Killed by : </b>org.apache.commons.digester3.SetPropertiesRuleTestCase.testNegativeNotIgnoreMissing(org.apache.commons.digester3.SetPropertiesRuleTestCase)</span></span> replaced return value with null for org/apache/commons/digester3/binder/BinderClassLoader::loadClass &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>loadClass<br/><b>Killed by : </b>org.apache.commons.digester3.SetPropertiesRuleTestCase.testNegativeNotIgnoreMissing(org.apache.commons.digester3.SetPropertiesRuleTestCase)</span></span> mutated return of Object value for org/apache/commons/digester3/binder/BinderClassLoader::loadClass to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>PRIMITIVE_RETURN_VALS_MUTATOR</li>
+<li class='mutator'>EXPERIMENTAL_SWITCH_MUTATOR</li>
+<li class='mutator'>CONSTRUCTOR_CALL_MUTATOR</li>
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+<li class='mutator'>BOOLEAN_TRUE_RETURN</li>
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+<li class='mutator'>REMOVE_CONDITIONALS_ORDER_IF_MUTATOR</li>
+<li class='mutator'>REMOVE_CONDITIONALS_EQUAL_ELSE_MUTATOR</li>
+<li class='mutator'>EMPTY_RETURN_VALUES</li>
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+<li class='mutator'>EXPERIMENTAL_MEMBER_VARIABLE_MUTATOR</li>
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+<li class='mutator'>NULL_RETURN_VALUES</li>
+<li class='mutator'>REMOVE_CONDITIONALS_ORDER_ELSE_MUTATOR</li>
+<li class='mutator'>MATH_MUTATOR</li>
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+<li class='mutator'>NON_VOID_METHOD_CALL_MUTATOR</li>
+<li class='mutator'>BOOLEAN_FALSE_RETURN</li>
+<li class='mutator'>INLINE_CONSTANT_MUTATOR</li>
+<li class='mutator'>REMOVE_CONDITIONALS_EQUAL_IF_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>org.apache.commons.digester3.xmlrules.BeanPropertySetterRuleTestCase.extractPropertyNameFromAttribute(org.apache.commons.digester3.xmlrules.BeanPropertySetterRuleTestCase) (4 ms)</li><li>org.apache.commons.digester3.SetPropertiesRuleTestCase.testIgnoreMissing(org.apache.commons.digester3.SetPropertiesRuleTestCase) (2 ms)</li><li>org.apache.commons.digester3.binder.BinderClassLoaderTestCase.loadChar(org.apache.commons.digester3.binder.BinderClassLoaderTestCase) (0 ms)</li><li>org.apache.commons.digester3.SetNestedPropertiesRuleTestCase.testUnknownChildrenExceptionOverride(org.apache.commons.digester3.SetNestedPropertiesRuleTestCase) (2 ms)</li><li>org.apache.commons.digester3.binder.BinderClassLoaderTestCase.loadShort(org.apache.commons.digester3.binder.BinderClassLoaderTestCase) (0 ms)</li><li>org.apache.commons.digester3.binder.BinderClassLoaderTestCase.loadInt(org.apache.commons.digester3.binder.BinderClassLoaderTestCase) (0 ms)</li><li>org.apache.commons.digester3.SetNestedPropertiesRuleTestCase.testCustomisedProperties2a(org.apache.commons.digester3.SetNestedPropertiesRuleTestCase) (2 ms)</li><li>org.apache.commons.digester3.SetNestedPropertiesRuleTestCase.testMandatoryProperties(org.apache.commons.digester3.SetNestedPropertiesRuleTestCase) (16 ms)</li><li>org.apache.commons.digester3.Digester153TestCase.basicConstructorViaXML(org.apache.commons.digester3.Digester153TestCase) (34 ms)</li><li>org.apache.commons.digester3.CallMethodRuleTestCase.testBasic(org.apache.commons.digester3.CallMethodRuleTestCase) (5 ms)</li><li>org.apache.commons.digester3.CallMethodRuleTestCase.testCallMethodOnly(org.apache.commons.digester3.CallMethodRuleTestCase) (2 ms)</li><li>org.apache.commons.digester3.NodeCreateRuleTestCase.testNamespacedAttribute(org.apache.commons.digester3.NodeCreateRuleTestCase) (1 ms)</li><li>org.apache.commons.digester3.OverlappingCallMethodRuleTestCase.testItem2(org.apache.commons.digester3.OverlappingCallMethodRuleTestCase) (1 ms)</li><li>org.apache.commons.digester3.binder.BinderClassLoaderTestCase.loadDouble(org.apache.commons.digester3.binder.BinderClassLoaderTestCase) (0 ms)</li><li>org.apache.commons.digester3.AsyncReaderTestCase.parseFromClasspathURL(org.apache.commons.digester3.AsyncReaderTestCase) (41 ms)</li><li>org.apache.commons.digester3.AsyncReaderTestCase.parseFromInputSource(org.apache.commons.digester3.AsyncReaderTestCase) (1 ms)</li><li>org.apache.commons.digester3.AsyncReaderTestCase.parseFromReader(org.apache.commons.digester3.AsyncReaderTestCase) (13 ms)</li><li>org.apache.commons.digester3.CallMethodRuleTestCase.testOrderNestedPartB(org.apache.commons.digester3.CallMethodRuleTestCase) (2 ms)</li><li>org.apache.commons.digester3.OverlappingCallMethodRuleTestCase.testItem4(org.apache.commons.digester3.OverlappingCallMethodRuleTestCase) (1 ms)</li><li>org.apache.commons.digester3.CallMethodRuleTestCase.testSettingProperties(org.apache.commons.digester3.CallMethodRuleTestCase) (6 ms)</li><li>org.apache.commons.digester3.xmlrules.FromXmlRuleSetTest.testLoad2(org.apache.commons.digester3.xmlrules.FromXmlRuleSetTest) (12 ms)</li><li>org.apache.commons.digester3.xmlrules.FromXmlRuleSetTest.testFactoryIgnoreCreateRule(org.apache.commons.digester3.xmlrules.FromXmlRuleSetTest) (3 ms)</li><li>org.apache.commons.digester3.AsyncReaderTestCase.parseFromInputStream(org.apache.commons.digester3.AsyncReaderTestCase) (2 ms)</li><li>org.apache.commons.digester3.BeanPropertySetterRuleTestCase.testSetUnknownProperty(org.apache.commons.digester3.BeanPropertySetterRuleTestCase) (8 ms)</li><li>org.apache.commons.digester3.LocationTrackerTestCase.testAll(org.apache.commons.digester3.LocationTrackerTestCase) (2 ms)</li><li>org.apache.commons.digester3.binder.BinderClassLoaderTestCase.loadFloat(org.apache.commons.digester3.binder.BinderClassLoaderTestCase) (1 ms)</li><li>org.apache.commons.digester3.CallMethodRuleTestCase.testOrderNestedPartA(org.apache.commons.digester3.CallMethodRuleTestCase) (2 ms)</li><li>org.apache.commons.digester3.binder.BinderClassLoaderTestCase.loadBoolean(org.apache.commons.digester3.binder.BinderClassLoaderTestCase) (0 ms)</li><li>org.apache.commons.digester3.OverlappingCallMethodRuleTestCase.testWildcard1(org.apache.commons.digester3.OverlappingCallMethodRuleTestCase) (1 ms)</li><li>org.apache.commons.digester3.BeanPropertySetterRuleTestCase.testSetGivenProperty(org.apache.commons.digester3.BeanPropertySetterRuleTestCase) (3 ms)</li><li>org.apache.commons.digester3.SetPropertiesRuleTestCase.testPositiveNotIgnoreMissingWithIgnoreAttributes(org.apache.commons.digester3.SetPropertiesRuleTestCase) (1 ms)</li><li>org.apache.commons.digester3.binder.DigesterLoaderTestCase.digeser152(org.apache.commons.digester3.binder.DigesterLoaderTestCase) (1 ms)</li><li>org.apache.commons.digester3.BeanPropertySetterRuleTestCase.extractPropertyNameFromAttribute(org.apache.commons.digester3.BeanPropertySetterRuleTestCase) (34 ms)</li><li>org.apache.commons.digester3.AsyncReaderTestCase.parseFromUri(org.apache.commons.digester3.AsyncReaderTestCase) (2 ms)</li><li>org.apache.commons.digester3.annotations.failingtests.FailingTestCase.failsBecauseFailingDigesterLoaderHandlerFactory(org.apache.commons.digester3.annotations.failingtests.FailingTestCase) (1 ms)</li><li>org.apache.commons.digester3.NodeCreateRuleTestCase.testImport(org.apache.commons.digester3.NodeCreateRuleTestCase) (2 ms)</li><li>org.apache.commons.digester3.Digester153TestCase.basicConstructorViaAnnotations(org.apache.commons.digester3.Digester153TestCase) (9 ms)</li><li>org.apache.commons.digester3.BeanPropertySetterRuleTestCase.testDigesterBodyTextStack(org.apache.commons.digester3.BeanPropertySetterRuleTestCase) (2 ms)</li><li>org.apache.commons.digester3.Digester153TestCase.basicConstructorViaBinder(org.apache.commons.digester3.Digester153TestCase) (1 ms)</li><li>org.apache.commons.digester3.SetPropertyRuleTestCase.testPositive(org.apache.commons.digester3.SetPropertyRuleTestCase) (1 ms)</li><li>org.apache.commons.digester3.xmlrules.FromXmlRuleSetTest.testCallParamRule(org.apache.commons.digester3.xmlrules.FromXmlRuleSetTest) (3 ms)</li><li>org.apache.commons.digester3.xmlrules.IncludeTest.testCircularInclude(org.apache.commons.digester3.xmlrules.IncludeTest) (5 ms)</li><li>org.apache.commons.digester3.plugins.TestXmlRuleInfo.testXmlRuleInfoExplicitResource(org.apache.commons.digester3.plugins.TestXmlRuleInfo) (3 ms)</li><li>org.apache.commons.digester3.annotations.employee.EmployeeTestCase.testEmployee(org.apache.commons.digester3.annotations.employee.EmployeeTestCase) (6 ms)</li><li>org.apache.commons.digester3.xmlrules.IncludeTest.testBasicInclude(org.apache.commons.digester3.xmlrules.IncludeTest) (7 ms)</li><li>org.apache.commons.digester3.NodeCreateRuleTestCase.testDocumentFragment(org.apache.commons.digester3.NodeCreateRuleTestCase) (1 ms)</li><li>org.apache.commons.digester3.SetNestedPropertiesRuleTestCase.testCustomisedProperties2b(org.apache.commons.digester3.SetNestedPropertiesRuleTestCase) (1 ms)</li><li>org.apache.commons.digester3.NodeCreateRuleTestCase.testNamespaces(org.apache.commons.digester3.NodeCreateRuleTestCase) (1 ms)</li><li>org.apache.commons.digester3.binder.DigesterLoaderTestCase.digester151(org.apache.commons.digester3.binder.DigesterLoaderTestCase) (0 ms)</li><li>org.apache.commons.digester3.annotations.addressbook.AddressBookTestCase.testAddressBook(org.apache.commons.digester3.annotations.addressbook.AddressBookTestCase) (9 ms)</li><li>org.apache.commons.digester3.CallMethodRuleTestCase.testParamsFromStack(org.apache.commons.digester3.CallMethodRuleTestCase) (3 ms)</li><li>org.apache.commons.digester3.SetNestedPropertiesRuleTestCase.testMultiRuleMatch(org.apache.commons.digester3.SetNestedPropertiesRuleTestCase) (1 ms)</li><li>org.apache.commons.digester3.SetNestedPropertiesRuleTestCase.testRecursiveNestedProperties(org.apache.commons.digester3.SetNestedPropertiesRuleTestCase) (1 ms)</li><li>org.apache.commons.digester3.SetPropertiesRuleTestCase.testPositive(org.apache.commons.digester3.SetPropertiesRuleTestCase) (2 ms)</li><li>org.apache.commons.digester3.SetNestedPropertiesRuleTestCase.testAutomaticallySetProperties(org.apache.commons.digester3.SetNestedPropertiesRuleTestCase) (1 ms)</li><li>org.apache.commons.digester3.annotations.servletbean.ServletBeanTestCase.testServletBean(org.apache.commons.digester3.annotations.servletbean.ServletBeanTestCase) (2 ms)</li><li>org.apache.commons.digester3.AsyncReaderTestCase.parseFromFile(org.apache.commons.digester3.AsyncReaderTestCase) (8 ms)</li><li>org.apache.commons.digester3.NodeCreateRuleTestCase.testEntityText(org.apache.commons.digester3.NodeCreateRuleTestCase) (1 ms)</li><li>org.apache.commons.digester3.SetPropertiesRuleTestCase.testNegativeNotIgnoreMissing(org.apache.commons.digester3.SetPropertiesRuleTestCase) (3 ms)</li><li>org.apache.commons.digester3.xmlrules.FromXmlRuleSetTest.testSetCustomProperties(org.apache.commons.digester3.xmlrules.FromXmlRuleSetTest) (5 ms)</li><li>org.apache.commons.digester3.SetNestedPropertiesRuleTestCase.testCustomisedProperties1(org.apache.commons.digester3.SetNestedPropertiesRuleTestCase) (1 ms)</li><li>org.apache.commons.digester3.xmlrules.FromXmlRuleSetTest.testCreateDigester(org.apache.commons.digester3.xmlrules.FromXmlRuleSetTest) (15 ms)</li><li>org.apache.commons.digester3.xmlrules.FromXmlRuleSetTest.testLoad1(org.apache.commons.digester3.xmlrules.FromXmlRuleSetTest) (14 ms)</li><li>org.apache.commons.digester3.NamespaceSnapshotTestCase.testNamespaceSnapshots(org.apache.commons.digester3.NamespaceSnapshotTestCase) (3 ms)</li><li>org.apache.commons.digester3.OverlappingCallMethodRuleTestCase.testItem1(org.apache.commons.digester3.OverlappingCallMethodRuleTestCase) (1 ms)</li><li>org.apache.commons.digester3.OverlappingCallMethodRuleTestCase.testItem3(org.apache.commons.digester3.OverlappingCallMethodRuleTestCase) (1 ms)</li><li>org.apache.commons.digester3.OverlappingCallMethodRuleTestCase.testWildcard2(org.apache.commons.digester3.OverlappingCallMethodRuleTestCase) (2 ms)</li><li>org.apache.commons.digester3.xmlrules.FromXmlRuleSetTest.testBasePath(org.apache.commons.digester3.xmlrules.FromXmlRuleSetTest) (15 ms)</li><li>org.apache.commons.digester3.NodeCreateRuleTestCase.testNested(org.apache.commons.digester3.NodeCreateRuleTestCase) (2 ms)</li><li>org.apache.commons.digester3.XIncludeTestCase.testXInclude(org.apache.commons.digester3.XIncludeTestCase) (5 ms)</li><li>org.apache.commons.digester3.SetPropertyRuleTestCase.testElementWithNoAttributes(org.apache.commons.digester3.SetPropertyRuleTestCase) (5 ms)</li><li>org.apache.commons.digester3.NodeCreateRuleTestCase.testAttributes(org.apache.commons.digester3.NodeCreateRuleTestCase) (6 ms)</li><li>org.apache.commons.digester3.xmlrules.FromXmlRuleSetTest.testFactoryNotIgnoreCreateRule(org.apache.commons.digester3.xmlrules.FromXmlRuleSetTest) (12 ms)</li><li>org.apache.commons.digester3.SetPropertyRuleTestCase.testNegative(org.apache.commons.digester3.SetPropertyRuleTestCase) (7 ms)</li><li>org.apache.commons.digester3.xmlrules.FromXmlRuleSetTest.testInputSourceLoader(org.apache.commons.digester3.xmlrules.FromXmlRuleSetTest) (6 ms)</li><li>org.apache.commons.digester3.binder.BinderClassLoaderTestCase.loadLong(org.apache.commons.digester3.binder.BinderClassLoaderTestCase) (0 ms)</li><li>org.apache.commons.digester3.NodeCreateRuleTestCase.testNonNamespacedAttribute(org.apache.commons.digester3.NodeCreateRuleTestCase) (2 ms)</li><li>org.apache.commons.digester3.plugins.TestXmlRuleInfo.testXmlRuleImplicitResource(org.apache.commons.digester3.plugins.TestXmlRuleInfo) (6 ms)</li><li>org.apache.commons.digester3.ObjectParamRuleTestCase.testBasic(org.apache.commons.digester3.ObjectParamRuleTestCase) (1 ms)</li><li>org.apache.commons.digester3.xmlrules.FromXmlRuleSetTest.testFactoryCreateRule(org.apache.commons.digester3.xmlrules.FromXmlRuleSetTest) (3 ms)</li><li>org.apache.commons.digester3.NodeCreateRuleTestCase.testElement(org.apache.commons.digester3.NodeCreateRuleTestCase) (1 ms)</li><li>org.apache.commons.digester3.BeanPropertySetterRuleTestCase.testDigesterRuleCallOrder(org.apache.commons.digester3.BeanPropertySetterRuleTestCase) (4 ms)</li><li>org.apache.commons.digester3.annotations.person.PersonTestCase.testPerson(org.apache.commons.digester3.annotations.person.PersonTestCase) (2 ms)</li><li>org.apache.commons.digester3.xmlrules.SetNamespaceURITestCase.atomWithNamespaceParse(org.apache.commons.digester3.xmlrules.SetNamespaceURITestCase) (691 ms)</li><li>org.apache.commons.digester3.binder.BinderClassLoaderTestCase.loadByte(org.apache.commons.digester3.binder.BinderClassLoaderTestCase) (0 ms)</li><li>org.apache.commons.digester3.annotations.rss.RssTestCase.testRss(org.apache.commons.digester3.annotations.rss.RssTestCase) (4 ms)</li><li>org.apache.commons.digester3.binder.DigesterLoaderTestCase.digester155(org.apache.commons.digester3.binder.DigesterLoaderTestCase) (1 ms)</li><li>org.apache.commons.digester3.annotations.catalog.CatalogTestCase.testCatalog(org.apache.commons.digester3.annotations.catalog.CatalogTestCase) (4 ms)</li><li>org.apache.commons.digester3.SetNestedPropertiesRuleTestCase.testUnknownChildrenCausesException(org.apache.commons.digester3.SetNestedPropertiesRuleTestCase) (2 ms)</li><li>org.apache.commons.digester3.BeanPropertySetterRuleTestCase.testAutomaticallySetProperties(org.apache.commons.digester3.BeanPropertySetterRuleTestCase) (4 ms)</li><li>org.apache.commons.digester3.plugins.TestXmlRuleInfo.testXmlRuleInfoExplicitFile(org.apache.commons.digester3.plugins.TestXmlRuleInfo) (3 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.3.2
+
+</body>
+</html>
