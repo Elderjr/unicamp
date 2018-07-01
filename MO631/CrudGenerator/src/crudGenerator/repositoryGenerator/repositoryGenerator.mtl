@@ -1,0 +1,25 @@
+[comment encoding = UTF-8 /]
+[module repositoryGenerator('http://www.example.org/springModelMof')]
+
+[template public repositoryGenerator(entity : CrudEntity)]
+[file (entity.packageRoot.replaceAll('\\.','/')+'/repositories/' + entity.name + 'Repository.java', false, 'UTF-8')]
+
+package [entity.packageRoot/].repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import [entity.packageRoot/].models.[entity.name/];
+
+
+@Repository
+public interface [entity.name/]Repository extends JpaRepository<[entity.name/], Integer> {
+
+/*
+  Queries to search for [entity.name/] instances
+*/
+//[protected (entity.name+'Searchs')]
+//[/protected]
+}
+[/file]
+[/template]
+

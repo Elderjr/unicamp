@@ -1,0 +1,26 @@
+[comment encoding = UTF-8 /]
+[module modelValidatorGenerator('http://www.example.org/springModelMof')]
+
+
+[template public modelValidatorGenerator(entity : CrudEntity)]
+[file (entity.packageRoot.replaceAll('\\.','/') + '/models/' + entity.name + 'Validator.java', false, 'UTF-8')]
+package [entity.packageRoot/].models;
+import util.Response;
+public class [entity.name/]Validator {
+
+  /* Validate a instance of [entity.name/] */
+  public static Response saveValidation([entity.name/] [entity.name.toLowerCase()/]){
+    //[protected (entity.name + 'SaveValidation')]
+  	  return new Response(true);
+    //[/protected]
+  } 
+
+  /* Validate a instance of [entity.name/] */
+  public static Response deleteValidation([entity.name/] [entity.name.toLowerCase()/]){
+    //[protected (entity.name + 'DeleteValidation')]
+  	  return new Response(true);
+    //[/protected]
+  } 
+}
+[/file]
+[/template]

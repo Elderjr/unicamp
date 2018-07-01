@@ -1,0 +1,26 @@
+[comment encoding = UTF-8 /]
+[module serviceGenerator('http://www.example.org/springModelMof')]
+
+
+[template public serviceGenerator(entity : CrudEntity)]
+[file (entity.packageRoot.replaceAll('\\.','/') + '/services/' + entity.name + 'Service.java', false, 'UTF-8')]
+
+package [entity.packageRoot/].services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import [entity.packageRoot/].repositories.[entity.name/]Repository;
+
+@Service
+public class [entity.name/]Service {
+	
+	@Autowired
+	[entity.name/]Repository [entity.name.toLowerCase()/]Repository;
+	
+	public [entity.name/]Repository getRepository() {
+		return this.[entity.name.toLowerCase()/]Repository;
+	}
+}
+[/file]
+[/template]

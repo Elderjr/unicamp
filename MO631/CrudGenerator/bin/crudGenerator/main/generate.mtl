@@ -1,0 +1,55 @@
+[comment encoding = UTF-8 /]
+[module generate('http://www.example.org/springModelMof')]
+[import crudGenerator::modelGenerator::modelGenerator /]
+[import crudGenerator::modelGenerator::modelValidatorGenerator /]
+[import crudGenerator::repositoryGenerator::repositoryGenerator /]
+[import crudGenerator::serviceGenerator::serviceGenerator /]
+[import crudGenerator::controllerGenerator::controllerGenerator /]
+
+
+[template public generateElement(system : System)]
+[comment @main/]
+[for (entity : Entity | system.entities)]
+	[entity.modelGenerator() /]
+    [if(entity.oclIsTypeOf(CrudEntity))]
+	[entity.oclAsType(CrudEntity).modelValidatorGenerator()/]  
+    [entity.oclAsType(CrudEntity).serviceGenerator()/]  
+    [entity.oclAsType(CrudEntity).repositoryGenerator()/]
+    [entity.oclAsType(CrudEntity).controllerGenerator()/]
+    [/if]
+[/for]
+
+[file ('util/Response.java', false, 'UTF-8')]
+package util;
+
+public class Response {
+
+	private String message;
+	private boolean success;
+	
+	public Response(boolean success) {
+		this.success = success;
+	}
+
+	public Response(boolean success, String message) {
+		this.success = success;
+		this.message = message;
+	}
+	
+	public String getMessage() {
+		return this.message;
+	}
+
+    public void setMessage(String message){
+    	this.message = message;
+    }
+	
+	public boolean isSuccess() {
+		return this.success;
+	}
+}
+[/file]
+
+[/template]
+
+

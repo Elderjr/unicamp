@@ -17,9 +17,7 @@ helper def: typeMap: Map(String, CRUDSpring!TypesEnum) = Map{
 -- Map between UML Database Operations and Ecore Database Operations
 helper def: operationMap: Map(String, CRUDSpring!ReferenceOperations) = Map{
 	('Cascade', #Cascade),
-	('Restrict', #Restrict),
-	('NoAction', #NoAction),
-	('SetNull', #SetNull)
+	('NoAction', #NoAction)
 };
 
 -- Map between UML Property and Ecore Property
@@ -52,6 +50,7 @@ rule Entity{
 	)
 	to ecoreEntity: CRUDSpring!Entity(
 		name <- umlEntity.name,
+		packageRoot <- if(umlEntity.owner.oclIsTypeOf(UML!Package)) then umlEntity.owner.name else '' endif,
 		properties <- umlEntity.ownedAttribute
 	)
 }
@@ -129,15 +128,14 @@ rule Association{
 	)
 	using{
 		--values of the stereotype
-		loadValue: Boolean = umlAssociation.getStereotypeProperty('SpringModel::EntityAssociation', 'load');
 		operationValue: UML!EnumerationLiteral = umlAssociation.getStereotypeProperty('SpringModel::EntityAssociation', 'operation');
 	}
 	do{	
 		--for each property in the association member end, make sure that it has been mapped on ReferenceProperty rule 
 		--and set the load and operation attributes
+		
 		for (umlProp in umlAssociation.memberEnd){
 			if (not thisModule.propertyMap.get(umlProp).oclIsUndefined()){
-				thisModule.propertyMap.get(umlProp).type.load <- loadValue;
 				--set the corresponding UML Database Operation in Ecore			
 				thisModule.propertyMap.get(umlProp).type.operation <- thisModule.operationMap.get(operationValue.name);
 			}

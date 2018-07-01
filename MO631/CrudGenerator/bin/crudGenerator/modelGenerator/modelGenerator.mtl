@@ -1,0 +1,179 @@
+[comment encoding = UTF-8 /]
+[module modelGenerator('http://www.example.org/springModelMof')]
+
+[template public modelGenerator(entity : Entity)]
+[file (entity.packageRoot.replaceAll('\\.','/') + '/models/' + entity.name + '.java', false, 'UTF-8')]
+package [entity.packageRoot/].models;
+import java.util.LinkedList;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+@Entity
+@Table(name = "[entity.name/]")
+public class [entity.name/] {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	
+    [for (property : Property | entity.properties) separator ('\n')]
+    @NotNull
+    [property.annotationTempl(entity)/]private [property.completePropertyTempl()/];
+    [/for]
+    [entity.manyToOneTempl()/]
+
+    [entity.defaultConstructorTempl()/]
+    
+    [entity.constructorTempl()/]
+
+    public int getId(){
+      return this.id;
+    }
+
+    public void setId(int id){
+      this.id = id;
+    }
+
+	[for (property : Property | entity.properties) separator ('\n')]
+    [property.getTempl()/]
+
+    [property.setTempl()/]
+    [/for]
+
+    [entity.manyToOneSetTempl()/]
+
+    
+}
+[/file]
+[/template]
+
+[comment Type and name of the property. Example: List<Address> addresses or Person person./]
+[template private completePropertyTempl(property : Property)]
+[property.attributeTypeTempl()/] [property.name/]
+[/template]
+
+
+[comment Type of the property. Example: List<Address> or Person or Integer./]
+[template public attributeTypeTempl(property : Property)]
+[if (property.size > 1 or property.size = -1)]
+List<[property.typeNameTempl()/]>[else]
+[property.typeNameTempl()/][/if]
+[/template]
+
+[comment Type of the property without considering the size of the property. Example: Address, Person, String /]
+[template public typeNameTempl(property : Property)]
+[if (property.type.oclIsTypeOf(PrimitiveType))]
+[property.type.oclAsType(PrimitiveType).primitiveToJavaPrimitive()/][else]
+[property.type.oclAsType(ReferenceType).entity.name/][/if]
+[/template]
+
+[comment Spring Annotation of the property/]
+[template private annotationTempl(property: Property, entity: Entity)]
+[if (property.type.oclIsTypeOf(ReferenceType) and (property.size > 1 or property.size = -1))]
+@OneToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY, mappedBy = "[entity.name.toLowerCase()/]")
+@OnDelete(action = OnDeleteAction.[property.type.oclAsType(ReferenceType).toSpring()/])
+[elseif (property.type.oclIsTypeOf(ReferenceType))]
+@OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY, mappedBy = "[entity.name.toLowerCase()/]")
+@OnDelete(action = OnDeleteAction.[property.type.oclAsType(ReferenceType).toSpring()/])
+[/if]
+[/template]
+
+[comment Default constructor of the model where all lists are created to avoid null point exception./]
+[template private defaultConstructorTempl(entity: Entity)]
+public [entity.name/](){
+[for (property : Property | entity.properties)]
+[if(property.size <> 1)]
+  this.[property.name/] = new LinkedList<>();
+[/if]
+[/for]}
+[/template]
+
+[comment Constructor of the model/]
+[template private constructorTempl(entity: Entity)]
+public [entity.name/]([entity.attributeListTempl()/]){
+[for (property : Property | entity.properties)]
+   this.[property.name/] = [property.name/];
+[/for]}
+[/template]
+
+[comment Sequence of parameters of the constructor/]
+[template private attributeListTempl(entity: Entity)]
+[for (property : Property | entity.properties) separator (', ')]
+[property.completePropertyTempl()/][/for]
+[/template]
+
+[comment Spring manyToOne annotation/]
+[template private manyToOneTempl(entity: Entity)]
+[for (e : Entity | entity.getReferencedEntity())]
+@ManyToOne(fetch = FetchType.LAZY)
+@JoinColumn(name = "[e.name.toLower()/]_id", nullable = false)
+private [e.name/] [e.name.toLower()/];
+[/for]
+[/template]
+
+[comment set method of the manyToOne attribute/]
+[template private manyToOneSetTempl(entity: Entity)]
+[for (e : Entity | entity.getReferencedEntity())]
+public void set[e.name/]([e.name/] [e.name.toLower()/]){
+  this.[e.name.toLower()/] = [e.name.toLower()/];
+}
+[/for]
+[/template]
+
+[comment get method of property/]
+[template private getTempl(property: Property)]
+public [property.attributeTypeTempl()/] get[property.name.toUpperFirst()/](){
+  return this.[property.name/];
+}
+[/template]
+
+[comment set method of property/]
+[template private setTempl(property: Property)]
+public void set[property.name.toUpperFirst()/]([property.attributeTypeTempl()/] [property.name/]){
+  this.[property.name/] = [property.name/]; 
+}
+[/template]
+
+[comment convert a defined type in ecore to a java type/]
+[template private primitiveToJavaPrimitive(primitive: PrimitiveType)]
+[if (primitive.type.toString() = 'string')]
+String[else]
+[primitive.type/][/if]
+[/template]
+
+[comment convert operator to spring operator/]
+[template private toSpring(referenceType: ReferenceType)]
+[if (referenceType.operation.toString() = 'Cascade')]
+CASCADE[else]
+NO_ACTION[/if]
+[/template]
+
+[comment query to search all entities that have reference to a given entity/]
+[query public getReferencedEntity(entity: Entity): Set(Entity) = 
+  Entity.allInstances()->select(e: Entity | e.properties->exists(p: Property |  
+    p.type.oclIsKindOf(ReferenceType) and p.type.oclAsType(ReferenceType).entity = entity))
+/]
+
+
+
+
+
+
+
+
+
