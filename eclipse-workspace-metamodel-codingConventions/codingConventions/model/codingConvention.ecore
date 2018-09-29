@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="codingConvention" nsURI="http://www.example.org/codingConvention"
+    nsPrefix="codingConvention">
+  <eSubpackages name="filters" nsURI="http://www.example.org/codingConvention/filters"
+      nsPrefix="filters">
+    <eClassifiers xsi:type="ecore:EClass" name="Filter" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="negated" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CompositeFilter" eSuperTypes="#//filters/Filter">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="filter" upperBound="-1"
+          eType="#//filters/Filter" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="newAttribute" eType="#//filters/FilterOperation"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="FilterOperation">
+      <eLiterals name="AND"/>
+      <eLiterals name="OR" value="1"/>
+      <eLiterals name="IF-THEN" value="2"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="AtomicFilter" abstract="true" eSuperTypes="#//filters/Filter">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+          eType="#//elements/Element"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="PropertyFilter" eSuperTypes="#//filters/AtomicFilter">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="property" lowerBound="1"
+          eType="#//elements/properties/Property" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="TemplateFilter" eSuperTypes="#//filters/AtomicFilter">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="template" lowerBound="1"
+          eType="#//elements/Element"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="elements" nsURI="http://www.example.org/codingConvention/elements"
+      nsPrefix="elements">
+    <eClassifiers xsi:type="ecore:EClass" name="Element" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+          eType="#//elements/properties/Property" containment="true"/>
+    </eClassifiers>
+    <eSubpackages name="properties" nsURI="http://www.example.org/codingConvention/elements/properties"
+        nsPrefix="properties">
+      <eClassifiers xsi:type="ecore:EClass" name="Property" abstract="true"/>
+    </eSubpackages>
+  </eSubpackages>
+</ecore:EPackage>
