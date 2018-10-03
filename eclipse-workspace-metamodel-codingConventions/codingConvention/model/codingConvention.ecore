@@ -64,10 +64,43 @@
         <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//elements/types/Type"/>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="Parameter" eSuperTypes="#//elements/namedElements/NamedElement"/>
+      <eClassifiers xsi:type="ecore:EClass" name="Exception" eSuperTypes="#//elements/namedElements/Class"/>
     </eSubpackages>
     <eSubpackages name="statements" nsURI="http://www.example.org/codingConvention/elements/statements"
         nsPrefix="statements">
       <eClassifiers xsi:type="ecore:EClass" name="Statement" abstract="true" eSuperTypes="#//elements/Element"/>
+      <eClassifiers xsi:type="ecore:EClass" name="MethodInvocation" eSuperTypes="#//elements/statements/Statement">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="from" eType="#//elements/namedElements/NamedElement"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="to" eType="#//elements/namedElements/NamedElement"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="arguments" upperBound="-1"
+            eType="#//elements/statements/Statement" containment="true"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="MethodChaining" eSuperTypes="#//elements/statements/Statement">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="invocations" upperBound="-1"
+            eType="#//elements/statements/MethodInvocation" containment="true"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="ReferenceValue" eSuperTypes="#//elements/statements/Statement"/>
+      <eClassifiers xsi:type="ecore:EClass" name="LiteralValue" abstract="true" eSuperTypes="#//elements/statements/Statement"/>
+      <eClassifiers xsi:type="ecore:EClass" name="ExceptionHandling" abstract="true"
+          eSuperTypes="#//elements/statements/Statement"/>
+      <eClassifiers xsi:type="ecore:EClass" name="Body" eSuperTypes="#//elements/statements/Statement">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"
+            eType="#//elements/statements/Statement" containment="true"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="JavaExceptionHandling" eSuperTypes="#//elements/statements/ExceptionHandling">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="finallyClause" eType="#//elements/statements/FinallyClause"
+            containment="true"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="catchClause" upperBound="-1"
+            eType="#//elements/statements/CatchClause" containment="true"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="tryClause" eType="#//elements/statements/TryClause"
+            containment="true"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="CatchClause" eSuperTypes="#//elements/statements/Body">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="exceptionHandled" upperBound="-1"
+            eType="#//elements/namedElements/Exception" containment="true"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="FinallyClause" eSuperTypes="#//elements/statements/Body"/>
+      <eClassifiers xsi:type="ecore:EClass" name="TryClause" eSuperTypes="#//elements/statements/Body"/>
     </eSubpackages>
     <eSubpackages name="types" nsURI="http://www.example.org/codingConvention/elements/types"
         nsPrefix="types">
